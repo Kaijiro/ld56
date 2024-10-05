@@ -48,10 +48,6 @@ func _ready() -> void:
 
     self.sleep()
 
-    # DEBUG PURPOSE
-    #if randi() % 2:
-    self.awake()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if self.is_awake && self.position.y > self.awake_height:
@@ -113,19 +109,21 @@ func activate() -> void:
     await self.sing()
 
 func wrong() -> void:
-    self.head.play("oops")
-    self.isPulsing = false
-    self.tail_light.energy = max_energy
-    self.tail_light.color = wrong_light
-    await get_tree().create_timer(delay_idle).timeout
-    self.idle()
+    if self.is_awake:
+        self.head.play("oops")
+        self.isPulsing = false
+        self.tail_light.energy = max_energy
+        self.tail_light.color = wrong_light
+        await get_tree().create_timer(delay_idle).timeout
+        self.idle()
 
 func right() -> void:
-    self.isPulsing = false
-    self.tail_light.energy = max_energy
-    self.tail_light.color = good_light
-    await get_tree().create_timer(delay_idle).timeout
-    self.idle()
+    if self.is_awake:
+        self.isPulsing = false
+        self.tail_light.energy = max_energy
+        self.tail_light.color = good_light
+        await get_tree().create_timer(delay_idle).timeout
+        self.idle()
 
 func _on_area_2d_mouse_entered() -> void:
     self.clickable = self.is_awake && self.is_player_turn
@@ -138,3 +136,4 @@ func _on_player_turn_start() -> void:
 
 func _on_fireflies_turn_start() -> void:
     self.is_player_turn = false
+    

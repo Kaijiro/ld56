@@ -24,6 +24,9 @@ func _ready() -> void:
             node.connect("FireflyPlayed", self.handle_player_play)
             fireflies.append(node)
 
+    fireflies.shuffle()
+    for i in self.difficulties_awake_number[self.current_difficulty]:
+        fireflies[i].awake()
     GameSignals.connect("FirefliesTurn", self.call_sequence)
     GameSignals.connect("PlayerEnteredRightSequence", self.sequence_success)
     GameSignals.connect("PlayerEnteredWrongSequence", self.sequence_failure)
@@ -37,7 +40,7 @@ func call_sequence() -> void:
     if self.is_lasttry_error:
         self.is_lasttry_error = false
     else:
-        self.sequence.append(fireflies.pick_random())
+        self.sequence.append(self.fireflies.filter(func(node): return node.is_awake).pick_random())
         await self.get_tree().create_timer(1.5).timeout
     
     print("I will begin my sequence")
@@ -58,6 +61,8 @@ func sequence_success() -> void:
     print("New Score : "+str(self.score))
     if self.sequence.size() == self.difficulties_max[self.current_difficulty]:
         self.current_difficulty = min(self.current_difficulty + 1, self.difficulties_points.size())
+        for n in range(self.difficulties_awake_number[self.current_difficulty - 1], self.difficulties_awake_number[self.current_difficulty]):
+            self.fireflies[n].awake();
         self.point = self.difficulties_points[self.current_difficulty]
         print("New Difficulty : "+ str(self.current_difficulty))
     # TODO : Maybe add a timer here to wait for the animation to end
