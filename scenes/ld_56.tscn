@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=2 format=3 uid="uid://bo47qdmdnvd1v"]
+
+[ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 
 [node name="LD56" type="Node2D"]
+
+[node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
