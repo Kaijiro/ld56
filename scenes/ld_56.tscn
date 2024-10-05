@@ -5,8 +5,41 @@
 [node name="LD56" type="Node2D"]
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
-singing_light = Color(0.71, 0, 0.449667, 1)
+position = Vector2(-31, 550)
+singing_light = Color(0.490196, 0.113725, 0, 1)
+id = 1
 
 [node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(133, -1)
-singing_light = Color(0.0166664, 0, 1, 1)
+position = Vector2(102, 550)
+singing_light = Color(1, 0.583333, 0, 1)
+id = 2
+
+[node name="Firefly3" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(234, 550)
+singing_light = Color(0.966667, 1, 0, 1)
+id = 3
+
+[node name="Firefly4" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(364, 550)
+singing_light = Color(0, 1, 0.0666666, 1)
+id = 4
+
+[node name="Firefly5" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(497, 550)
+singing_light = Color(0.0261, 0.574635, 0.87, 1)
+id = 5
+
+[node name="Firefly6" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(628, 550)
+singing_light = Color(0.00937953, 0.168305, 1, 1)
+id = 6
+
+[node name="Firefly7" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(767, 550)
+singing_light = Color(0.28945, 0.145349, 0.840661, 1)
+id = 7
+
+[node name="Firefly8" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(902, 550)
+singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
+id = 8

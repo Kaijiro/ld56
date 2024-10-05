@@ -1,22 +1,58 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=14 format=3 uid="uid://ba2wt0cwplpt0"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://q7jshavpenqs" path="res://assets/body.png" id="1_jsfil"]
 [ext_resource type="Texture2D" uid="uid://cu4odgjw2a34l" path="res://assets/head_sheet.png" id="2_k51sn"]
 [ext_resource type="Texture2D" uid="uid://dcpxyx5uyhgqi" path="res://assets/tail.png" id="3_keolc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpc2h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pec36"]
 atlas = ExtResource("2_k51sn")
 region = Rect2(0, 0, 241, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m782c"]
+atlas = ExtResource("2_k51sn")
+region = Rect2(482, 0, 241, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqokt"]
+atlas = ExtResource("2_k51sn")
+region = Rect2(241, 0, 241, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbn56"]
+atlas = ExtResource("2_k51sn")
+region = Rect2(723, 0, 241, 213)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aikpu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cpc2h")
+"texture": SubResource("AtlasTexture_pec36")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m782c")
+}],
+"loop": true,
+"name": &"oops",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqokt")
+}],
+"loop": true,
+"name": &"sing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbn56")
+}],
+"loop": true,
+"name": &"sleep",
 "speed": 5.0
 }]
 
@@ -67,7 +103,7 @@ sprite_frames = SubResource("SpriteFrames_sn77k")
 [node name="TailLight" type="PointLight2D" parent="."]
 position = Vector2(137, 266)
 scale = Vector2(0.456161, 0.456161)
-color = Color(0, 0.88, 0.0586666, 1)
+color = Color(0.49, 0.114333, 0, 1)
 energy = 4.0
 blend_mode = 2
 texture = SubResource("GradientTexture2D_5et4v")
