@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=14 format=3 uid="uid://csdserjhkinsq"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://q7jshavpenqs" path="res://assets/body.png" id="1_jsfil"]
@@ -115,6 +115,8 @@ texture_scale = 4.16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(135, 161)
 shape = SubResource("CapsuleShape2D_mxgtp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

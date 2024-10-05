@@ -8,11 +8,17 @@ var sequence_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     for node in self.get_children():
-        if node.is_class("ColorRect"): # TODO : Maybe create a "Firefly" class ?
+        print(node)
+
+        if node is Firefly:
             node.connect("FireflyPlayed", self.handle_player_play)
             fireflies.append(node)
 
     GameSignals.connect("FirefliesTurn", self.call_sequence)
+
+    # Debug purpose
+    #await self.get_tree().create_timer(5).timeout
+    GameSignals.emit_signal("FirefliesTurn")
 
 func call_sequence() -> void:
     self.sequence.append(fireflies.pick_random())
@@ -27,7 +33,7 @@ func call_sequence() -> void:
 
 func play_sequence() -> void:
     for node in self.sequence:
-        await (node as Singing).play() # FIXME : Le cast pourra être retirer avec l'ajout de la "vraie" classe Firefly
+        await node.sing()
         await get_tree().create_timer(.5).timeout
 
 func handle_player_play(id: int) -> void:

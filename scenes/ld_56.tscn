@@ -1,45 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=11 format=3 uid="uid://bo47qdmdnvd1v"]
 
-[ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
+[ext_resource type="PackedScene" uid="uid://csdserjhkinsq" path="res://scenes/firefly.tscn" id="1_84c6k"]
+[ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
+[ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]
+[ext_resource type="AudioStream" uid="uid://dbvdpd6ivqyk8" path="res://assets/sounds/bleh.mp3" id="4_rlsal"]
+[ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_0a1n4"]
+[ext_resource type="AudioStream" uid="uid://b4w61pis4t4ud" path="res://assets/sounds/pling.mp3" id="6_q73oy"]
+[ext_resource type="AudioStream" uid="uid://ba1nujtt42o77" path="res://assets/sounds/pop.mp3" id="7_bdygm"]
+[ext_resource type="AudioStream" uid="uid://6iwvnqpckpep" path="res://assets/sounds/poum.mp3" id="8_526nx"]
+[ext_resource type="AudioStream" uid="uid://bgpiaqeumxnsu" path="res://assets/sounds/pshou.mp3" id="9_8woft"]
+[ext_resource type="AudioStream" uid="uid://dd4opnl5e42xe" path="res://assets/sounds/wizz.mp3" id="10_1vffv"]
 
 [node name="LD56" type="Node2D"]
+script = ExtResource("1_ea7qu")
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(-31, 550)
 singing_light = Color(0.490196, 0.113725, 0, 1)
 id = 1
+note = ExtResource("3_ir64s")
 
 [node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(102, 550)
 singing_light = Color(1, 0.583333, 0, 1)
 id = 2
+note = ExtResource("4_rlsal")
 
 [node name="Firefly3" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(234, 550)
 singing_light = Color(0.966667, 1, 0, 1)
 id = 3
+note = ExtResource("5_0a1n4")
 
 [node name="Firefly4" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(364, 550)
 singing_light = Color(0, 1, 0.0666666, 1)
 id = 4
+note = ExtResource("6_q73oy")
 
 [node name="Firefly5" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(497, 550)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
 id = 5
+note = ExtResource("7_bdygm")
 
 [node name="Firefly6" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(628, 550)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
 id = 6
+note = ExtResource("8_526nx")
 
 [node name="Firefly7" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(767, 550)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
 id = 7
+note = ExtResource("9_8woft")
 
 [node name="Firefly8" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(902, 550)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
+note = ExtResource("10_1vffv")
