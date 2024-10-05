@@ -5,3 +5,8 @@
 [node name="LD56" type="Node2D"]
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
+singing_light = Color(0.71, 0, 0.449667, 1)
+
+[node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
+position = Vector2(133, -1)
+singing_light = Color(0.0166664, 0, 1, 1)

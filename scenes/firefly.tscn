@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=11 format=3 uid="uid://ba2wt0cwplpt0"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://q7jshavpenqs" path="res://assets/body.png" id="1_jsfil"]
@@ -39,7 +39,11 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_wh7if")
 fill = 1
 fill_from = Vector2(0.508621, 0.487069)
-fill_to = Vector2(0, 1)
+fill_to = Vector2(0.0775862, 0.922414)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxgtp"]
+radius = 53.0
+height = 222.0
 
 [node name="Firefly" type="Node2D"]
 script = ExtResource("1_0mb7h")
@@ -60,11 +64,21 @@ position = Vector2(135, 228)
 scale = Vector2(0.456161, 0.456161)
 sprite_frames = SubResource("SpriteFrames_sn77k")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(135, 239)
+[node name="TailLight" type="PointLight2D" parent="."]
+position = Vector2(137, 266)
 scale = Vector2(0.456161, 0.456161)
 color = Color(0, 0.88, 0.0586666, 1)
-energy = 3.0
+energy = 4.0
 blend_mode = 2
 texture = SubResource("GradientTexture2D_5et4v")
-texture_scale = 7.31
+offset = Vector2(-0.135, -90)
+texture_scale = 4.16
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(135, 161)
+shape = SubResource("CapsuleShape2D_mxgtp")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
