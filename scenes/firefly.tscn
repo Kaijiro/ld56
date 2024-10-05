@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=14 format=3 uid="uid://csdserjhkinsq"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://q7jshavpenqs" path="res://assets/body.png" id="1_jsfil"]

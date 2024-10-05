@@ -10,11 +10,11 @@ var is_lasttry_error: bool = false
 
 # TODO Not sure if this is the right place for this
 var score: int = 0
-var point: int 
+var point: int
 var current_difficulty = 0
 @export var difficulties_awake_number: Array[int] = [3,4,6,8]
 @export var difficulties_points: Array[int] = [2,3,5,10]
-@export var difficulties_max: Array[int] = [3,5,7,666] 
+@export var difficulties_max: Array[int] = [3,5,7,666]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,9 +62,10 @@ func play_sequence() -> void:
         await get_tree().create_timer(.3).timeout
 
 func sequence_success() -> void:
-    print("Player has finished turn")  
+    print("Player has finished turn")
     self.sequence_index = 0
-    self.score += self.point        
+    self.score += self.point
+    GameSignals.emit_signal("ScoreChange", self.score)
     print("New Score : "+str(self.score))
     if self.sequence.size() == self.difficulties_max[self.current_difficulty]:
         self.current_difficulty = min(self.current_difficulty + 1, self.difficulties_points.size())
@@ -72,21 +73,21 @@ func sequence_success() -> void:
         print("New Difficulty : "+ str(self.current_difficulty))
     # TODO : Maybe add a timer here to wait for the animation to end
     GameSignals.emit_signal("FirefliesTurn")
-    
+
 func sequence_failure() -> void:
     self.count_error += 1
     self.point = max(self.point - 1, 1);
     print("New point value : "+str(self.point))
     print("Error count : "+str(self.count_error))
     if self.count_error < self.max_error:
-        self.is_lasttry_error = true        
+        self.is_lasttry_error = true
         self.sequence_index = 0
         GameSignals.emit_signal("FirefliesTurn")
     else:
         GameSignals.emit_signal("GameOver")
 
 # TODO Placeholder, probably won't make it to final build
-func game_over() -> void:    
+func game_over() -> void:
     print("Final Score : ",self.score)
     self.init()
     print("New Game")
@@ -96,7 +97,7 @@ func handle_player_play(id: int) -> void:
     if self.sequence[self.sequence_index].id == id:
         print("Player input is right :",id)
         self.sequence_index = self.sequence_index + 1
-        if self.sequence_index == self.sequence.size():          
+        if self.sequence_index == self.sequence.size():
             GameSignals.emit_signal("PlayerEnteredRightSequence")
     else:
         print("Player input is wrong :",id)
