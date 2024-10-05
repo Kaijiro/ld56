@@ -5,3 +5,5 @@ signal PlayerTurn
 
 signal PlayerEnteredWrongSequence
 signal PlayerEnteredRightSequence
+
+signal GameOver
