@@ -11,7 +11,7 @@ signal FireflyPlayed(id)
 
 # Colors definition
 const idle_light: Color = Color.GREEN_YELLOW
-const wrong_light: Color = Color.CRIMSON
+const wrong_light: Color = Color.DARK_RED
 const good_light: Color = Color.DARK_GREEN
 
 # Light intensity
