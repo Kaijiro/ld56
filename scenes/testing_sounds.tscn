@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr8kd1w7451np"]
+
+[ext_resource type="Script" path="res://scripts/singing.gd" id="1_vrk26"]
+[ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="2_du231"]
+[ext_resource type="AudioStream" uid="uid://ba1nujtt42o77" path="res://assets/sounds/pop.mp3" id="3_wgif3"]
+[ext_resource type="AudioStream" uid="uid://dbvdpd6ivqyk8" path="res://assets/sounds/bleh.mp3" id="4_a18ft"]
+
+[node name="TestingSounds" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 154.0
+offset_top = 91.0
+offset_right = 194.0
+offset_bottom = 131.0
+color = Color(0.0151733, 0.732985, 0.842515, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect"]
+stream = ExtResource("2_du231")
+pitch_scale = 1.5
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 529.0
+offset_top = 67.0
+offset_right = 569.0
+offset_bottom = 107.0
+color = Color(0, 0.734737, 0.203957, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect2"]
+stream = ExtResource("3_wgif3")
+pitch_scale = 1.5
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 882.0
+offset_top = 149.0
+offset_right = 922.0
+offset_bottom = 189.0
+color = Color(0.930423, 0.29506, 0, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect3"]
+stream = ExtResource("4_a18ft")
+pitch_scale = 1.3
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 172.0
+offset_top = 487.0
+offset_right = 212.0
+offset_bottom = 527.0
+color = Color(0.6, 0.32549, 0.172549, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect4"]
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 477.0
+offset_top = 485.0
+offset_right = 517.0
+offset_bottom = 525.0
+color = Color(0.987108, 0.968161, 7.70092e-07, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect5"]
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = 998.0
+offset_top = 527.0
+offset_right = 1038.0
+offset_bottom = 567.0
+color = Color(0.775191, 0.21773, 0.835564, 1)
+script = ExtResource("1_vrk26")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect6"]
+
+[connection signal="mouse_entered" from="ColorRect" to="ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect" to="ColorRect" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect2" to="ColorRect2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect2" to="ColorRect2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect3" to="ColorRect3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect3" to="ColorRect3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect4" to="ColorRect4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect4" to="ColorRect4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect5" to="ColorRect5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect5" to="ColorRect5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ColorRect6" to="ColorRect6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect6" to="ColorRect6" method="_on_mouse_exited"]
