@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://csdserjhkinsq"]
+[gd_scene load_steps=14 format=3 uid="uid://ba2wt0cwplpt0"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
-[ext_resource type="Texture2D" uid="uid://q7jshavpenqs" path="res://assets/body.png" id="1_jsfil"]
 [ext_resource type="Texture2D" uid="uid://cu4odgjw2a34l" path="res://assets/head_sheet.png" id="2_k51sn"]
+[ext_resource type="Texture2D" uid="uid://cvji0vi8ek2lk" path="res://assets/bodyb.png" id="2_uc8gp"]
 [ext_resource type="Texture2D" uid="uid://dcpxyx5uyhgqi" path="res://assets/tail.png" id="3_keolc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pec36"]
@@ -87,7 +87,7 @@ script = ExtResource("1_0mb7h")
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(135, 157)
 scale = Vector2(0.452929, 0.452929)
-texture = ExtResource("1_jsfil")
+texture = ExtResource("2_uc8gp")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 position = Vector2(134.487, 77.75)
