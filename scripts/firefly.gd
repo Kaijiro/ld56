@@ -1,6 +1,6 @@
 class_name Firefly extends Node2D
 
-
+# Animation
 @onready var tail_light: PointLight2D = $TailLight
 @onready var head: AnimatedSprite2D = $Head
 
@@ -40,6 +40,9 @@ var is_awake: bool = false
 const flying_speed: int = 300
 const flying_distance: int = 100
 var flying_up = false
+
+# Leveling
+var is_perfect_run: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -118,6 +121,7 @@ func activate() -> void:
 
 func wrong() -> void:
     if self.is_awake:
+        self.is_perfect_run = false
         self.head.play("oops")
         self.isPulsing = false
         self.tail_light.energy = max_energy
@@ -127,17 +131,18 @@ func wrong() -> void:
 
 func right() -> void:
     if self.is_awake:
-        await get_tree().create_timer(self.id * 0.06).timeout
-        self.head.play("happy")
-        #self.position.y -= 50
-        var tween = get_tree().create_tween()
-        tween.tween_property(self,"position",Vector2(self.position.x,self.position.y-50),0.25)
         self.isPulsing = false
         self.tail_light.energy = max_energy
         self.tail_light.color = good_light
+        await get_tree().create_timer(self.id * 0.06).timeout
+        self.head.play("happy")
+        var tween = get_tree().create_tween()
+        tween.tween_property(self,"position",Vector2(self.position.x,self.position.y-50),0.25)
+        if self.is_perfect_run:
+            self.tail_light.color = self.singing_light
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y),0.25)
         await get_tree().create_timer(delay_idle).timeout
-        #self.position.y += 50
+        self.is_perfect_run = true
         self.idle()
 
 func _on_area_2d_mouse_entered() -> void:
