@@ -24,6 +24,7 @@ var isPulsing: bool = true
 
 # Sound
 @export var note: AudioStreamMP3
+@export_range(0.01, 4) var note_pitch: float = 1.0
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # Interactable
@@ -47,7 +48,8 @@ var is_perfect_run: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    self.audio_stream_player.stream = note
+    self.audio_stream_player.stream = self.note
+    self.audio_stream_player.pitch_scale = self.note_pitch
 
     GameSignals.PlayerEnteredRightSequence.connect(self.right)
     GameSignals.PlayerEnteredWrongSequence.connect(self.wrong)
@@ -167,5 +169,5 @@ func _on_await_next_input() -> void:
 func _on_block_inputs() -> void:
     self.is_game_await = false
 
-func is_clickable() -> bool:    
+func is_clickable() -> bool:
     return self.is_mouse_on && self.is_awake && self.is_player_turn && (self.is_game_await || self.is_creative)
