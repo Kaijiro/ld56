@@ -3,6 +3,8 @@ class_name Firefly extends Node2D
 # Animation
 @onready var tail_light: PointLight2D = $TailLight
 @onready var head: AnimatedSprite2D = $Head
+var tempo_blink: float = 0
+var blink_time: float = 0.8
 
 # Customisation
 @export var singing_light: Color = Color.BLUE_VIOLET
@@ -57,6 +59,9 @@ func _ready() -> void:
     GameSignals.FirefliesTurn.connect(self._on_fireflies_turn_start)
     GameSignals.AwaitNextInput.connect(self._on_await_next_input)
     GameSignals.BlockInputs.connect(self._on_block_inputs)
+    
+    self.blink_time = randf_range(0.1,0.7)
+    print(str(self.id)+" blink time is "+str(self.blink_time))
 
     self.sleep()
 
@@ -71,6 +76,14 @@ func _process(delta: float) -> void:
 
     if self.is_clickable() && Input.is_action_just_pressed("click"):
         self.activate()
+        
+    self.tempo_blink += delta
+    if self.tempo_blink >= self.blink_time:
+        self.head.play("sleep")
+    if self.tempo_blink >= self.blink_time + 0.2:
+        self.head.play("idle")
+    if self.tempo_blink >= 1.0:
+        self.tempo_blink = 0
 
     if self.isPulsing:
         if self.isPulseUp:

@@ -9,9 +9,9 @@
 atlas = ExtResource("2_k51sn")
 region = Rect2(0, 213, 241, 213)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pec36"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_verlv"]
 atlas = ExtResource("2_k51sn")
-region = Rect2(0, 0, 241, 213)
+region = Rect2(723, 213, 241, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m782c"]
 atlas = ExtResource("2_k51sn")
@@ -37,11 +37,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pec36")
+"texture": SubResource("AtlasTexture_verlv")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -105,7 +105,8 @@ texture = ExtResource("2_uc8gp")
 position = Vector2(-0.512985, -84.25)
 scale = Vector2(0.481221, 0.481221)
 sprite_frames = SubResource("SpriteFrames_aikpu")
-animation = &"sleep"
+animation = &"idle"
+frame_progress = 0.0691958
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 66)
