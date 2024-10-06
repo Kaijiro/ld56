@@ -136,7 +136,7 @@ func right() -> void:
         self.tail_light.energy = max_energy
         self.tail_light.color = good_light
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y),0.25)
-        await get_tree().create_timer(delay_idle).timeout        
+        await get_tree().create_timer(delay_idle).timeout
         #self.position.y += 50
         self.idle()
 
