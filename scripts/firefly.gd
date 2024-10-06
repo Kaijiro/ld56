@@ -5,6 +5,9 @@ class_name Firefly extends Node2D
 @onready var head: AnimatedSprite2D = $Head
 var tempo_blink: float = 0
 var blink_time: float = 0.8
+var balance_angle: float = 2
+var balance_direction: float = -1
+var balance_speed: float = 10
 
 # Customisation
 @export var singing_light: Color = Color.BLUE_VIOLET
@@ -61,6 +64,8 @@ func _ready() -> void:
     GameSignals.BlockInputs.connect(self._on_block_inputs)
     
     self.blink_time = randf_range(0.1,2.7)
+    self.balance_angle = randf_range(2.0,4.0)
+    self.balance_speed = randf_range(8,15)
 
     self.sleep()
 
@@ -75,14 +80,18 @@ func _process(delta: float) -> void:
         if self.tempo_blink >= self.blink_time + 0.2 && self.head.animation == "sleep":
             self.head.play("idle")
         if self.tempo_blink >= 3.0:
-            self.tempo_blink = 0       
+            self.tempo_blink = 0
+        if abs(self.rotation_degrees) >= self.balance_angle:
+            self.balance_direction = self.balance_direction * -1.0
+        self.rotation_degrees += delta * self.balance_speed * self.balance_direction
+        
+            
 
     if !self.is_awake && self.position.y > self.sleepy_height:
         self.position.y -= delta * awake_speed
 
     if self.is_clickable() && Input.is_action_just_pressed("click"):
-        self.activate()
-        
+        self.activate()     
 
 
     if self.isPulsing:
