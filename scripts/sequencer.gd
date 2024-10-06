@@ -98,6 +98,7 @@ func sequence_success() -> void:
         print("New Difficulty : "+ str(self.current_difficulty))
     if self.current_bonus_value >= self.bonus_trigger:
         self.count_error = max(0,self.count_error - 1)
+        self.bonus_trigger += 1
         GameSignals.emit_signal("LifeGain",  self.max_error - self.count_error)
     # TODO : Maybe add a timer here to wait for the animation to end
     GameSignals.emit_signal("FirefliesTurn")
