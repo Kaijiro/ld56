@@ -96,6 +96,8 @@ func handle_player_play(id: int) -> void:
         self.sequence_index = self.sequence_index + 1
         if self.sequence_index == self.sequence.size():
             GameSignals.emit_signal("PlayerEnteredRightSequence")
+        else:
+            GameSignals.emit_signal("AwaitNextInput")
     else:
         print("Player input is wrong :",id)
         GameSignals.emit_signal("PlayerEnteredWrongSequence")
