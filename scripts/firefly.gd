@@ -62,12 +62,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     if self.is_awake :
         if self.position.y > self.awake_height:
-            self.position.y -= delta * awake_speed
+            self.position.y -= delta * awake_speed        
 
     if !self.is_awake && self.position.y > self.sleepy_height:
         self.position.y -= delta * awake_speed
 
-    # Placeholder click to test
     if self.is_clickable() && Input.is_action_just_pressed("click"):
         self.activate()
 

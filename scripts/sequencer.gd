@@ -11,6 +11,7 @@ var count_error: int = 0
 var is_lasttry_error: bool = false
 var score: int = 0
 var point: int
+var is_perfect: bool = true
 
 # Leveling
 var current_difficulty = 0
@@ -21,11 +22,13 @@ var current_difficulty = 0
 # Some UI
 @onready var ui_listen: Sprite2D = $UI/Listen
 @onready var ui_player_turn: Sprite2D = $UI/PlayerTurn
+@onready var ui_perfect: Sprite2D = $UI/Perfect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     self.ui_listen.visible = false
     self.ui_player_turn.visible = false
+    self.ui_perfect.visible = false
     self.point = difficulties_points[self.current_difficulty]
     for node in self.get_children():
         if node is Firefly:
@@ -46,12 +49,13 @@ func _ready() -> void:
 
 func call_sequence() -> void:
     self.ui_player_turn.visible = false
+    
     if self.is_lasttry_error:
         self.is_lasttry_error = false
     else:
         self.add_note()
         await self.get_tree().create_timer(1).timeout
-
+    self.ui_perfect.visible = false
     print("I will begin my sequence")
     await self.play_sequence()
 
@@ -93,6 +97,7 @@ func sequence_success() -> void:
     GameSignals.emit_signal("FirefliesTurn")
 
 func sequence_failure() -> void:
+    self.is_perfect = false
     self.ui_player_turn.visible = false
     await get_tree().create_timer(1).timeout
     self.count_error += 1
@@ -118,6 +123,10 @@ func handle_player_play(id: int) -> void:
         print("Player input is right :",id)
         self.sequence_index = self.sequence_index + 1
         if self.sequence_index == self.sequence.size():
+            if self.is_perfect:
+                print("is perfect !")
+                self.ui_perfect.visible = true
+            self.is_perfect = true
             GameSignals.emit_signal("PlayerEnteredRightSequence")
         else:
             GameSignals.emit_signal("AwaitNextInput")

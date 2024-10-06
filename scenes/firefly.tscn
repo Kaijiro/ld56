@@ -97,23 +97,23 @@ height = 222.0
 script = ExtResource("1_0mb7h")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(135, 157)
+position = Vector2(1.52588e-05, -4.99998)
 scale = Vector2(0.452929, 0.452929)
 texture = ExtResource("2_uc8gp")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
-position = Vector2(134.487, 77.75)
+position = Vector2(-0.512985, -84.25)
 scale = Vector2(0.481221, 0.481221)
 sprite_frames = SubResource("SpriteFrames_aikpu")
-animation = &"happy"
+animation = &"sleep"
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
-position = Vector2(135, 228)
+position = Vector2(0, 66)
 scale = Vector2(0.456161, 0.456161)
 sprite_frames = SubResource("SpriteFrames_sn77k")
 
 [node name="TailLight" type="PointLight2D" parent="."]
-position = Vector2(137, 266)
+position = Vector2(2, 104)
 scale = Vector2(0.456161, 0.456161)
 color = Color(0.49, 0.114333, 0, 1)
 energy = 4.0
@@ -123,6 +123,7 @@ offset = Vector2(-0.135, -90)
 texture_scale = 4.16
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-135, -162)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(135, 161)

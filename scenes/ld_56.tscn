@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=19 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dbpbohtue36uv" path="res://assets/head_oops.png" id="12_xkipq"]
 [ext_resource type="Texture2D" uid="uid://qb6adh2esedt" path="res://assets/UI/listen.png" id="16_x6obg"]
 [ext_resource type="Texture2D" uid="uid://da2qx0e4cy4js" path="res://assets/UI/your_turn.png" id="17_ersqf"]
+[ext_resource type="Texture2D" uid="uid://jb5jxedra64s" path="res://assets/UI/perfect.png" id="18_dk3w0"]
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
@@ -27,64 +28,76 @@ scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("2_kbfrn")
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(47, 561)
+position = Vector2(120, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
 id = 1
 note = ExtResource("8_526nx")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(180, 561)
+position = Vector2(253, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
 id = 2
 note = ExtResource("5_0a1n4")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly3" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(312, 561)
+position = Vector2(385, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.966667, 1, 0, 1)
 id = 3
 note = ExtResource("3_ir64s")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly4" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(442, 561)
+position = Vector2(515, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
 id = 4
 note = ExtResource("4_rlsal")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly5" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(575, 561)
+position = Vector2(648, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
 id = 5
 note = ExtResource("10_1vffv")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly6" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(706, 561)
+position = Vector2(779, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
 id = 6
 note = ExtResource("9_8woft")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly7" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(845, 561)
+position = Vector2(918, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
 id = 7
 note = ExtResource("6_q73oy")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly8" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(980, 561)
+position = Vector2(1053, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
 note = ExtResource("7_bdygm")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(574.778, 322)
@@ -138,12 +151,18 @@ texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
 [node name="Listen" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(588, 112.5)
 texture = ExtResource("16_x6obg")
 
 [node name="PlayerTurn" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(609, 131.5)
 texture = ExtResource("17_ersqf")
+
+[node name="Perfect" type="Sprite2D" parent="UI"]
+position = Vector2(609, 131.5)
+texture = ExtResource("18_dk3w0")
 
 [node name="EndScreen" type="ColorRect" parent="UI"]
 visible = false

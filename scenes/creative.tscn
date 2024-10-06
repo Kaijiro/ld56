@@ -27,64 +27,76 @@ scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("2_483ds")
 
 [node name="Firefly" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(47, 561)
+position = Vector2(120, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
 id = 1
 note = ExtResource("4_d3api")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly2" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(180, 561)
+position = Vector2(253, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
 id = 2
 note = ExtResource("5_4i72a")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly3" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(312, 561)
+position = Vector2(385, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.966667, 1, 0, 1)
 id = 3
 note = ExtResource("6_rxlah")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly4" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(442, 561)
+position = Vector2(515, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
 id = 4
 note = ExtResource("7_vpkix")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly5" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(575, 561)
+position = Vector2(648, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
 id = 5
 note = ExtResource("8_1f2fb")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly6" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(706, 561)
+position = Vector2(779, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
 id = 6
 note = ExtResource("9_utsai")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly7" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(845, 561)
+position = Vector2(918, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
 id = 7
 note = ExtResource("10_whf1r")
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly8" parent="." instance=ExtResource("3_kdrq5")]
-position = Vector2(980, 561)
+position = Vector2(1053, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
 note = ExtResource("11_n0rrx")
-awake_height = 300
+awake_height = 400
+sleepy_height = 680
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(574.778, 322)
