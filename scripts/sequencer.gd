@@ -26,6 +26,7 @@ var current_difficulty = 0
 @onready var ui_listen: Sprite2D = $UI/Listen
 @onready var ui_player_turn: Sprite2D = $UI/PlayerTurn
 @onready var ui_perfect: Sprite2D = $UI/Perfect
+@onready var ld_logo: Sprite2D = $LdLogo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -76,9 +77,18 @@ func add_note() -> void:
 
 func play_sequence() -> void:
     self.ui_listen.visible = true
+    var tween = get_tree().create_tween()
+    
+    if self.current_difficulty > 1:
+        if randi_range(0,100) > 1:  
+            self.ld_logo.visible = true        
+            tween.tween_property(self.ld_logo,"position",Vector2(1128,self.ld_logo.position.y),0.25)
+    
     for node in self.sequence:
         await node.sing()
         await get_tree().create_timer(.3).timeout
+    tween = get_tree().create_tween()    
+    tween.tween_property(self.ld_logo,"position",Vector2(1205,540),0.25)
     self.ui_listen.visible = false
 
 func sequence_success() -> void:
