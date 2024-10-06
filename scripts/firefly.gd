@@ -31,6 +31,7 @@ var is_mouse_on: bool = false
 var is_player_turn: bool = false
 var is_game_await: bool = false
 @export var delay_idle: float = 0.5
+var is_creative: bool = false
 
 # Positionning
 @export var awake_height: int = 150
@@ -112,7 +113,8 @@ func idle() -> void:
 # When player has clicked on a firefly
 func activate() -> void:
     if not self.is_clickable():
-        return
+        if not self.is_creative:
+            return
 
     GameSignals.emit_signal("BlockInputs")
     self.is_game_await = false
@@ -165,5 +167,5 @@ func _on_await_next_input() -> void:
 func _on_block_inputs() -> void:
     self.is_game_await = false
 
-func is_clickable() -> bool:
-    return self.is_mouse_on && self.is_awake && self.is_player_turn && self.is_game_await
+func is_clickable() -> bool:    
+    return self.is_mouse_on && self.is_awake && self.is_player_turn && (self.is_game_await || self.is_creative)

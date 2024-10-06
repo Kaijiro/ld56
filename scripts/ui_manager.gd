@@ -28,3 +28,6 @@ func _on_game_over() -> void:
 func _on_play_again_button_pressed() -> void:
     print('An other !')
     get_tree().reload_current_scene()
+    
+func _on_back_button_pressed() -> void:
+    self.get_tree().change_scene_to_file("res://scenes/menu.tscn")
