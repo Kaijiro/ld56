@@ -30,11 +30,6 @@ corner_radius_bottom_left = 30
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
-max_error = null
-bonus_trigger = null
-difficulties_awake_number = null
-difficulties_points = null
-difficulties_max = null
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(573, 323)
