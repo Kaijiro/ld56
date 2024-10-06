@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=18 format=3 uid="uid://bo47qdmdnvd1v"]
 
-[ext_resource type="PackedScene" uid="uid://csdserjhkinsq" path="res://scenes/firefly.tscn" id="1_84c6k"]
+[ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_kbfrn"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dllvvmg7ykfbk" path="res://assets/head_happy.png" id="12_s5mw6"]
 [ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="12_w8ykc"]
 [ext_resource type="Texture2D" uid="uid://dbpbohtue36uv" path="res://assets/head_oops.png" id="12_xkipq"]
+[ext_resource type="Texture2D" uid="uid://qb6adh2esedt" path="res://assets/UI/listen.png" id="16_x6obg"]
+[ext_resource type="Texture2D" uid="uid://da2qx0e4cy4js" path="res://assets/UI/your_turn.png" id="17_ersqf"]
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
@@ -122,3 +124,11 @@ offset_right = 139.0
 offset_bottom = 22.0
 texture = ExtResource("12_s5mw6")
 expand_mode = 1
+
+[node name="Listen" type="Sprite2D" parent="UI"]
+position = Vector2(588, 112.5)
+texture = ExtResource("16_x6obg")
+
+[node name="PlayerTurn" type="Sprite2D" parent="UI"]
+position = Vector2(609, 131.5)
+texture = ExtResource("17_ersqf")

@@ -1,23 +1,31 @@
 extends Node2D
 
+# Sequences
 var fireflies = []
 var sequence = []
-
 var sequence_index = 0
+
+# Score
 @export var max_error: int = 3
 var count_error: int = 0
 var is_lasttry_error: bool = false
-
-# TODO Not sure if this is the right place for this
 var score: int = 0
 var point: int
+
+# Leveling
 var current_difficulty = 0
 @export var difficulties_awake_number: Array[int] = [3,4,6,8]
 @export var difficulties_points: Array[int] = [2,3,5,10]
 @export var difficulties_max: Array[int] = [3,5,7,666]
 
+# Some UI
+@onready var ui_listen: Sprite2D = $UI/Listen
+@onready var ui_player_turn: Sprite2D = $UI/PlayerTurn
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    self.ui_listen.visible = false
+    self.ui_player_turn.visible = false
     self.point = difficulties_points[self.current_difficulty]
     for node in self.get_children():
         if node is Firefly:
@@ -36,23 +44,27 @@ func _ready() -> void:
     #await self.get_tree().create_timer(5).timeout
     GameSignals.emit_signal("FirefliesTurn")
 
-func call_sequence() -> void:
+func call_sequence() -> void:    
+    self.ui_player_turn.visible = false
     if self.is_lasttry_error:
         self.is_lasttry_error = false
     else:
         self.sequence.append(self.fireflies.filter(func(node): return node.is_awake).pick_random())
-        await self.get_tree().create_timer(1.5).timeout
+        await self.get_tree().create_timer(1).timeout
 
-    print("I will begin my sequence")
+    print("I will begin my sequence")    
     await self.play_sequence()
 
     print("My sequence is terminated, asking player to start its turn")
     GameSignals.emit_signal("PlayerTurn")
+    self.ui_player_turn.visible = true
 
 func play_sequence() -> void:
+    self.ui_listen.visible = true
     for node in self.sequence:
         await node.sing()
         await get_tree().create_timer(.3).timeout
+    self.ui_listen.visible = false
 
 func sequence_success() -> void:
     print("Player has finished turn")
