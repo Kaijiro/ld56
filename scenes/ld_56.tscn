@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bo47qdmdnvd1v"]
 
-[ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
+[ext_resource type="PackedScene" uid="uid://csdserjhkinsq" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_kbfrn"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]

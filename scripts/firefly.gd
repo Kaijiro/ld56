@@ -136,4 +136,3 @@ func _on_player_turn_start() -> void:
 
 func _on_fireflies_turn_start() -> void:
     self.is_player_turn = false
-    

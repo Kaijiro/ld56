@@ -42,7 +42,7 @@ func call_sequence() -> void:
     else:
         self.sequence.append(self.fireflies.filter(func(node): return node.is_awake).pick_random())
         await self.get_tree().create_timer(1.5).timeout
-    
+
     print("I will begin my sequence")
     await self.play_sequence()
 
@@ -75,6 +75,7 @@ func sequence_failure() -> void:
     self.point = max(self.point - 1, 1);
     print("New point value : "+str(self.point))
     print("Error count : "+str(self.count_error))
+    GameSignals.emit_signal("LifeLost",  self.max_error - self.count_error)
     if self.count_error < self.max_error:
         self.is_lasttry_error = true
         self.sequence_index = 0
