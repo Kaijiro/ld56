@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=16 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
+[ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_kbfrn"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]
 [ext_resource type="AudioStream" uid="uid://dbvdpd6ivqyk8" path="res://assets/sounds/bleh.mp3" id="4_rlsal"]
 [ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_0a1n4"]
@@ -12,10 +13,16 @@
 [ext_resource type="AudioStream" uid="uid://dd4opnl5e42xe" path="res://assets/sounds/wizz.mp3" id="10_1vffv"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="11_mf5cl"]
 [ext_resource type="Texture2D" uid="uid://dllvvmg7ykfbk" path="res://assets/head_happy.png" id="12_s5mw6"]
+[ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="12_w8ykc"]
 [ext_resource type="Texture2D" uid="uid://dbpbohtue36uv" path="res://assets/head_oops.png" id="12_xkipq"]
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(573, 323)
+scale = Vector2(0.905556, 0.905556)
+texture = ExtResource("2_kbfrn")
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
 position = Vector2(-31, 550)
@@ -64,6 +71,11 @@ position = Vector2(902, 550)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
 note = ExtResource("10_1vffv")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(574.778, 322)
+scale = Vector2(0.905556, 0.905556)
+texture = ExtResource("12_w8ykc")
 
 [node name="UI" type="Node" parent="."]
 script = ExtResource("11_mf5cl")
