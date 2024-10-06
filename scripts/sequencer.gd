@@ -49,7 +49,7 @@ func call_sequence() -> void:
     if self.is_lasttry_error:
         self.is_lasttry_error = false
     else:
-        self.sequence.append(self.fireflies.filter(func(node): return node.is_awake).pick_random())
+        self.add_note()
         await self.get_tree().create_timer(1).timeout
 
     print("I will begin my sequence")
@@ -58,6 +58,16 @@ func call_sequence() -> void:
     print("My sequence is terminated, asking player to start its turn")
     GameSignals.emit_signal("PlayerTurn")
     self.ui_player_turn.visible = true
+    
+func add_note() -> void:
+    var tmp_selection = self.fireflies.filter(func(node): return node.is_awake).pick_random()
+    var invalid_selection = true
+    if self.sequence.size() >= 2:
+        invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id 
+        while invalid_selection:
+            tmp_selection = self.fireflies.filter(func(node): return node.is_awake).pick_random()
+            invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id                 
+    self.sequence.append(tmp_selection)
 
 func play_sequence() -> void:
     self.ui_listen.visible = true
