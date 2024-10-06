@@ -150,6 +150,7 @@ offset_bottom = 281.0
 text = "Game over !"
 
 [node name="ScoreLabel" type="Label" parent="UI/EndScreen"]
+layout_mode = 0
 offset_left = 596.0
 offset_top = 297.0
 offset_right = 652.0
