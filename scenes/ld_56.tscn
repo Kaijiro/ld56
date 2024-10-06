@@ -168,6 +168,7 @@ position = Vector2(609, 131.5)
 texture = ExtResource("17_ersqf")
 
 [node name="Perfect" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(609, 131.5)
 texture = ExtResource("18_dk3w0")
 

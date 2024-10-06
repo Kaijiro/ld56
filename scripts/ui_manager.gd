@@ -25,7 +25,6 @@ func _on_life_lost(remaining_lifes: int) -> void:
     (life_texture as TextureRect).self_modulate = Color(.33, .33, .33)
     
 func _on_life_gain(remaining_lifes: int) -> void:
-    print(self.lifes_label.get_children())
     var life_texture = self.lifes_label.get_children()[remaining_lifes-1]
     (life_texture as TextureRect).texture = happy_face
     (life_texture as TextureRect).self_modulate = Color(1, 1, 1)    
@@ -34,7 +33,6 @@ func _on_game_over() -> void:
     end_screen.visible = true
 
 func _on_play_again_button_pressed() -> void:
-    print('An other !')
     get_tree().reload_current_scene()
     
 func _on_back_button_pressed() -> void:

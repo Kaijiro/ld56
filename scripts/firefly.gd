@@ -68,7 +68,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     if self.is_awake :
         if self.position.y > self.awake_height:
-            self.position.y -= delta * awake_speed        
+            self.position.y -= delta * awake_speed 
+        self.tempo_blink += delta 
+        if self.tempo_blink >= self.blink_time && self.head.animation == "idle":
+            self.head.play("sleep")
+        if self.tempo_blink >= self.blink_time + 0.2 && self.head.animation == "sleep":
+            self.head.play("idle")
+        if self.tempo_blink >= 3.0:
+            self.tempo_blink = 0       
 
     if !self.is_awake && self.position.y > self.sleepy_height:
         self.position.y -= delta * awake_speed
@@ -76,13 +83,7 @@ func _process(delta: float) -> void:
     if self.is_clickable() && Input.is_action_just_pressed("click"):
         self.activate()
         
-    self.tempo_blink += delta
-    if self.tempo_blink >= self.blink_time && self.head.animation == "idle":
-        self.head.play("sleep")
-    if self.tempo_blink >= self.blink_time + 0.2 && self.head.animation == "sleep":
-        self.head.play("idle")
-    if self.tempo_blink >= 3.0:
-        self.tempo_blink = 0
+
 
     if self.isPulsing:
         if self.isPulseUp:
