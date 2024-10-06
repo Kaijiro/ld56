@@ -20,6 +20,7 @@
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
+difficulties_awake_number = Array[int]([8, 4, 6, 8])
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(573, 323)
@@ -27,52 +28,64 @@ scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("2_kbfrn")
 
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(-18, 555)
+position = Vector2(47, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
 id = 1
 note = ExtResource("3_ir64s")
 
 [node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(115, 555)
+position = Vector2(180, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
 id = 2
 note = ExtResource("4_rlsal")
+awake_height = 300
 
 [node name="Firefly3" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(247, 555)
+position = Vector2(312, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.966667, 1, 0, 1)
 id = 3
 note = ExtResource("5_0a1n4")
 
 [node name="Firefly4" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(377, 555)
+position = Vector2(442, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
 id = 4
 note = ExtResource("6_q73oy")
+awake_height = 300
 
 [node name="Firefly5" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(510, 555)
+position = Vector2(575, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
 id = 5
 note = ExtResource("7_bdygm")
 
 [node name="Firefly6" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(641, 555)
+position = Vector2(706, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
 id = 6
 note = ExtResource("8_526nx")
+awake_height = 300
 
 [node name="Firefly7" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(780, 555)
+position = Vector2(845, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
 id = 7
 note = ExtResource("9_8woft")
 
 [node name="Firefly8" parent="." instance=ExtResource("1_84c6k")]
-position = Vector2(915, 555)
+position = Vector2(980, 561)
+scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
 note = ExtResource("10_1vffv")
+awake_height = 300
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(574.778, 322)
