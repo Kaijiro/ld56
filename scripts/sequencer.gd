@@ -100,9 +100,8 @@ func sequence_failure() -> void:
 # TODO Placeholder, probably won't make it to final build
 func game_over() -> void:
     print("Final Score : ",self.score)
-    print("New Game")
-    await get_tree().create_timer(1.5).timeout
-    get_tree().reload_current_scene()
+    GameSignals.emit_signal("BlockInputs")
+    self.ui_player_turn.visible = false
 
 func handle_player_play(id: int) -> void:
     if self.sequence[self.sequence_index].id == id:
