@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://blts3iqlygl0g"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_jc0un"]
+[ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="1_qkcfw"]
+[ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="2_fhks8"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jc0un")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_qkcfw")
+expand_mode = 1
+
+[node name="FG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("2_fhks8")
+expand_mode = 1
+
+[node name="ClassicModeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 256.0
+offset_right = 636.0
+offset_bottom = 287.0
+text = "Classic mode"
+
+[node name="SurvivalModeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 302.0
+offset_right = 641.0
+offset_bottom = 333.0
+text = "Survival Mode (not yet impl)
+"
+
+[node name="CreativeModeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 350.0
+offset_right = 643.0
+offset_bottom = 381.0
+text = "Creative mode (not yet impl)"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 620.0
+offset_right = 282.0
+offset_bottom = 643.0
+text = "A game made for the LudumDare 56"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 622.0
+offset_right = 1150.0
+offset_bottom = 645.0
+text = "Made with coffee and energy drinks by OkkoLOBR and Kaijiro"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 144.0
+offset_right = 881.0
+offset_bottom = 206.0
+bbcode_enabled = true
+text = "[font_size=45]It's a game title, bitch plz[/font_size]"
+scroll_active = false
+
+[connection signal="pressed" from="ClassicModeButton" to="." method="_on_classic_mode_button_pressed"]
+[connection signal="pressed" from="SurvivalModeButton" to="." method="_on_survival_mode_button_pressed"]
+[connection signal="pressed" from="CreativeModeButton" to="." method="_on_creative_mode_button_pressed"]
