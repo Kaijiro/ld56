@@ -44,7 +44,7 @@ func _ready() -> void:
     #await self.get_tree().create_timer(5).timeout
     GameSignals.emit_signal("FirefliesTurn")
 
-func call_sequence() -> void:    
+func call_sequence() -> void:
     self.ui_player_turn.visible = false
     if self.is_lasttry_error:
         self.is_lasttry_error = false
@@ -52,7 +52,7 @@ func call_sequence() -> void:
         self.sequence.append(self.fireflies.filter(func(node): return node.is_awake).pick_random())
         await self.get_tree().create_timer(1).timeout
 
-    print("I will begin my sequence")    
+    print("I will begin my sequence")
     await self.play_sequence()
 
     print("My sequence is terminated, asking player to start its turn")

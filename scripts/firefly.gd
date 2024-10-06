@@ -44,12 +44,13 @@ var flying_up = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     self.audio_stream_player.stream = note
-    
+
     GameSignals.PlayerEnteredRightSequence.connect(self.right)
     GameSignals.PlayerEnteredWrongSequence.connect(self.wrong)
     GameSignals.PlayerTurn.connect(self._on_player_turn_start)
     GameSignals.FirefliesTurn.connect(self._on_fireflies_turn_start)
     GameSignals.AwaitNextInput.connect(self._on_await_next_input)
+    GameSignals.BlockInputs.connect(self._on_block_inputs)
 
     self.sleep()
 
@@ -57,7 +58,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     if self.is_awake :
         if self.position.y > self.awake_height:
-            self.position.y -= delta * awake_speed    
+            self.position.y -= delta * awake_speed
 
     if !self.is_awake && self.position.y > self.sleepy_height:
         self.position.y -= delta * awake_speed
@@ -109,6 +110,8 @@ func idle() -> void:
 func activate() -> void:
     if not self.is_clickable():
         return
+
+    GameSignals.emit_signal("BlockInputs")
     self.is_game_await = false
     await self.sing()
     self.emit_signal("FireflyPlayed", self.id)
@@ -143,9 +146,12 @@ func _on_player_turn_start() -> void:
 func _on_fireflies_turn_start() -> void:
     self.is_player_turn = false
     self.is_game_await = false
-    
+
 func _on_await_next_input() -> void:
     self.is_game_await = true
+
+func _on_block_inputs() -> void:
+    self.is_game_await = false
 
 func is_clickable() -> bool:
     return self.is_mouse_on && self.is_awake && self.is_player_turn && self.is_game_await

@@ -35,21 +35,12 @@ offset_right = 636.0
 offset_bottom = 287.0
 text = "Classic mode"
 
-[node name="SurvivalModeButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 523.0
-offset_top = 302.0
-offset_right = 641.0
-offset_bottom = 333.0
-text = "Survival Mode (not yet impl)
-"
-
 [node name="CreativeModeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 522.0
-offset_top = 350.0
-offset_right = 643.0
-offset_bottom = 381.0
+offset_left = 474.0
+offset_top = 317.0
+offset_right = 702.0
+offset_bottom = 348.0
 text = "Creative mode (not yet impl)"
 
 [node name="Label" type="Label" parent="."]
@@ -79,5 +70,4 @@ text = "[font_size=45]It's a game title, bitch plz[/font_size]"
 scroll_active = false
 
 [connection signal="pressed" from="ClassicModeButton" to="." method="_on_classic_mode_button_pressed"]
-[connection signal="pressed" from="SurvivalModeButton" to="." method="_on_survival_mode_button_pressed"]
 [connection signal="pressed" from="CreativeModeButton" to="." method="_on_creative_mode_button_pressed"]

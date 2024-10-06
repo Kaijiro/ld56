@@ -5,6 +5,8 @@ signal PlayerTurn
 
 signal PlayerEnteredWrongSequence
 signal PlayerEnteredRightSequence
+
+signal BlockInputs
 signal AwaitNextInput
 
 signal ScoreChange(new_score: int)
