@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cti1dpq8iaig5"]
+[gd_scene load_steps=14 format=3 uid="uid://cti1dpq8iaig5"]
 
 [ext_resource type="Script" path="res://scripts/creative_mngr.gd" id="1_g3438"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_483ds"]
-[ext_resource type="PackedScene" uid="uid://csdserjhkinsq" path="res://scenes/firefly.tscn" id="3_kdrq5"]
+[ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="3_kdrq5"]
 [ext_resource type="AudioStream" uid="uid://6iwvnqpckpep" path="res://assets/sounds/poum.mp3" id="4_d3api"]
 [ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_4i72a"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="6_rxlah"]
@@ -12,11 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b4w61pis4t4ud" path="res://assets/sounds/pling.mp3" id="10_whf1r"]
 [ext_resource type="AudioStream" uid="uid://ba1nujtt42o77" path="res://assets/sounds/pop.mp3" id="11_n0rrx"]
 [ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="12_60nvj"]
-[ext_resource type="Script" path="res://scripts/ui_manager.gd" id="13_g7kva"]
-[ext_resource type="Texture2D" uid="uid://dbpbohtue36uv" path="res://assets/head_oops.png" id="14_7bruq"]
-[ext_resource type="Texture2D" uid="uid://dllvvmg7ykfbk" path="res://assets/head_happy.png" id="15_eg6b1"]
-[ext_resource type="Texture2D" uid="uid://qb6adh2esedt" path="res://assets/UI/listen.png" id="16_x3r87"]
-[ext_resource type="Texture2D" uid="uid://da2qx0e4cy4js" path="res://assets/UI/your_turn.png" id="17_qpfgm"]
+[ext_resource type="Script" path="res://scripts/creative_ui_manager.gd" id="13_g0hjb"]
 
 [node name="Creative" type="Node2D"]
 script = ExtResource("1_g3438")
@@ -32,9 +28,9 @@ scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
 id = 1
 note = ExtResource("4_d3api")
+note_pitch = 0.85
 awake_height = 250
 sleepy_height = 680
-note_pitch = 0.85
 
 [node name="Firefly2" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(253, 680)
@@ -42,9 +38,9 @@ scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
 id = 2
 note = ExtResource("5_4i72a")
+note_pitch = 0.925
 awake_height = 400
 sleepy_height = 680
-note_pitch = 0.925
 
 [node name="Firefly3" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(385, 680)
@@ -61,39 +57,39 @@ scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
 id = 4
 note = ExtResource("7_vpkix")
+note_pitch = 1.333
 awake_height = 400
 sleepy_height = 680
-note_pitch = 1.333
 
 [node name="Firefly5" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(648, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
 id = 5
-awake_height = 250
-sleepy_height = 680
 note = ExtResource("9_utsai")
 note_pitch = 1.4
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly6" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(779, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
 id = 6
-awake_height = 400
-sleepy_height = 680
 note = ExtResource("10_whf1r")
 note_pitch = 1.3
+awake_height = 400
+sleepy_height = 680
 
 [node name="Firefly7" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(918, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
 id = 7
-awake_height = 250
-sleepy_height = 680
 note = ExtResource("8_1f2fb")
 note_pitch = 1.4
+awake_height = 250
+sleepy_height = 680
 
 [node name="Firefly8" parent="." instance=ExtResource("3_kdrq5")]
 position = Vector2(1053, 680)
@@ -101,9 +97,9 @@ scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
 id = 8
 note = ExtResource("11_n0rrx")
+note_pitch = 1.5
 awake_height = 400
 sleepy_height = 680
-note_pitch = 1.5
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(574.778, 322)
@@ -111,99 +107,7 @@ scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("12_60nvj")
 
 [node name="UI" type="Node" parent="."]
-script = ExtResource("13_g7kva")
-unhappy_face = ExtResource("14_7bruq")
-
-[node name="ScoreLabel" type="Label" parent="UI"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Score : "
-
-[node name="ScoreValue" type="Label" parent="UI/ScoreLabel"]
-layout_mode = 0
-offset_left = 58.0
-offset_right = 106.0
-offset_bottom = 23.0
-text = "0"
-
-[node name="LifesLabel" type="Label" parent="UI"]
-visible = false
-offset_top = 24.0
-offset_right = 49.0
-offset_bottom = 47.0
-text = "Lifes : "
-
-[node name="Life1" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 52.0
-offset_right = 79.0
-offset_bottom = 22.0
-texture = ExtResource("15_eg6b1")
-expand_mode = 1
-
-[node name="Life2" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 82.0
-offset_right = 109.0
-offset_bottom = 22.0
-texture = ExtResource("15_eg6b1")
-expand_mode = 1
-
-[node name="Life3" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 112.0
-offset_right = 139.0
-offset_bottom = 22.0
-texture = ExtResource("15_eg6b1")
-expand_mode = 1
-
-[node name="Listen" type="Sprite2D" parent="UI"]
-position = Vector2(588, 112.5)
-texture = ExtResource("16_x3r87")
-
-[node name="PlayerTurn" type="Sprite2D" parent="UI"]
-position = Vector2(609, 131.5)
-texture = ExtResource("17_qpfgm")
-
-[node name="EndScreen" type="ColorRect" parent="UI"]
-visible = false
-offset_left = -4.0
-offset_top = -2.0
-offset_right = 1153.0
-offset_bottom = 648.0
-color = Color(0.325, 0.325, 0.325, 0.622)
-
-[node name="Label" type="Label" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 582.0
-offset_top = 258.0
-offset_right = 675.0
-offset_bottom = 281.0
-text = "Game over !"
-
-[node name="ScoreLabel" type="Label" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 596.0
-offset_top = 297.0
-offset_right = 652.0
-offset_bottom = 320.0
-text = "Score : "
-
-[node name="ScoreValue" type="Label" parent="UI/EndScreen/ScoreLabel"]
-layout_mode = 0
-offset_left = 58.0
-offset_right = 106.0
-offset_bottom = 23.0
-text = "0"
-
-[node name="Button" type="Button" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 583.0
-offset_top = 351.0
-offset_right = 670.0
-offset_bottom = 382.0
-text = "Play again"
+script = ExtResource("13_g0hjb")
 
 [node name="Button" type="Button" parent="UI"]
 offset_left = 1029.0
@@ -212,5 +116,4 @@ offset_right = 1144.0
 offset_bottom = 638.0
 text = "Back to menu"
 
-[connection signal="pressed" from="UI/EndScreen/Button" to="UI" method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="UI/Button" to="UI" method="_on_back_button_pressed"]
+[connection signal="pressed" from="UI/Button" to="UI" method="_on_back_to_menu_pressed"]

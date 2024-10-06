@@ -52,7 +52,7 @@ func _ready() -> void:
 
 func call_sequence() -> void:
     self.ui_player_turn.visible = false
-    
+
     if self.is_lasttry_error:
         self.is_lasttry_error = false
     else:
@@ -63,15 +63,15 @@ func call_sequence() -> void:
 
     GameSignals.emit_signal("PlayerTurn")
     self.ui_player_turn.visible = true
-    
+
 func add_note() -> void:
     var tmp_selection = self.fireflies.filter(func(node): return node.is_awake).pick_random()
     var invalid_selection = true
     if self.sequence.size() >= 2:
-        invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id 
+        invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id
         while invalid_selection:
             tmp_selection = self.fireflies.filter(func(node): return node.is_awake).pick_random()
-            invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id                 
+            invalid_selection = self.sequence[self.sequence.size()-1].id == tmp_selection.id && self.sequence[self.sequence.size()-2].id == tmp_selection.id
     self.sequence.append(tmp_selection)
 
 func play_sequence() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=21 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
@@ -18,9 +18,22 @@
 [ext_resource type="Texture2D" uid="uid://qb6adh2esedt" path="res://assets/UI/listen.png" id="16_x6obg"]
 [ext_resource type="Texture2D" uid="uid://da2qx0e4cy4js" path="res://assets/UI/your_turn.png" id="17_ersqf"]
 [ext_resource type="Texture2D" uid="uid://jb5jxedra64s" path="res://assets/UI/perfect.png" id="18_dk3w0"]
+[ext_resource type="Texture2D" uid="uid://dy4x2jbo4l1aj" path="res://assets/UI/game_over.png" id="19_spnmx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkkr5"]
+bg_color = Color(0.6, 0.6, 0.6, 0.714)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
+max_error = null
+bonus_trigger = null
+difficulties_awake_number = null
+difficulties_points = null
+difficulties_max = null
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(573, 323)
@@ -116,8 +129,10 @@ unhappy_face = ExtResource("12_xkipq")
 happy_face = ExtResource("12_s5mw6")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 1.0
+offset_top = 75.0
+offset_right = 57.0
+offset_bottom = 98.0
 text = "Score : "
 
 [node name="ScoreValue" type="Label" parent="UI/ScoreLabel"]
@@ -127,33 +142,29 @@ offset_right = 106.0
 offset_bottom = 23.0
 text = "0"
 
-[node name="LifesLabel" type="Label" parent="UI"]
-offset_top = 24.0
-offset_right = 49.0
-offset_bottom = 47.0
-text = "Lifes : "
+[node name="Lifes" type="Node" parent="UI"]
 
-[node name="Life1" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 52.0
-offset_right = 79.0
-offset_bottom = 22.0
-texture = ExtResource("12_s5mw6")
-expand_mode = 1
-
-[node name="Life2" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 82.0
-offset_right = 109.0
-offset_bottom = 22.0
-texture = ExtResource("12_s5mw6")
-expand_mode = 1
-
-[node name="Life3" type="TextureRect" parent="UI/LifesLabel"]
-layout_mode = 0
-offset_left = 112.0
+[node name="Life1" type="TextureRect" parent="UI/Lifes"]
+offset_left = 81.0
+offset_top = 12.0
 offset_right = 139.0
-offset_bottom = 22.0
+offset_bottom = 59.0
+texture = ExtResource("12_s5mw6")
+expand_mode = 1
+
+[node name="Life2" type="TextureRect" parent="UI/Lifes"]
+offset_left = 141.0
+offset_top = 12.0
+offset_right = 199.0
+offset_bottom = 59.0
+texture = ExtResource("12_s5mw6")
+expand_mode = 1
+
+[node name="Life3" type="TextureRect" parent="UI/Lifes"]
+offset_left = 201.0
+offset_top = 12.0
+offset_right = 259.0
+offset_bottom = 59.0
 texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
@@ -172,6 +183,23 @@ visible = false
 position = Vector2(609, 131.5)
 texture = ExtResource("18_dk3w0")
 
+[node name="Panel" type="Panel" parent="UI"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 67.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pkkr5")
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 54.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 28
+text = "x0"
+horizontal_alignment = 2
+
 [node name="EndScreen" type="ColorRect" parent="UI"]
 visible = false
 offset_left = -4.0
@@ -180,20 +208,19 @@ offset_right = 1153.0
 offset_bottom = 648.0
 color = Color(0.325, 0.325, 0.325, 0.622)
 
-[node name="Label" type="Label" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 582.0
-offset_top = 258.0
-offset_right = 675.0
-offset_bottom = 281.0
-text = "Game over !"
-
 [node name="ScoreLabel" type="Label" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 596.0
-offset_top = 297.0
-offset_right = 652.0
-offset_bottom = 320.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_right = 17.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Score : "
 
 [node name="ScoreValue" type="Label" parent="UI/EndScreen/ScoreLabel"]
@@ -203,12 +230,90 @@ offset_right = 106.0
 offset_bottom = 23.0
 text = "0"
 
-[node name="Button" type="Button" parent="UI/EndScreen"]
-layout_mode = 0
-offset_left = 583.0
-offset_top = 351.0
-offset_right = 670.0
-offset_bottom = 382.0
+[node name="PlayAgainButton" type="Button" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = 41.5
+offset_right = 43.5
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Play again"
 
-[connection signal="pressed" from="UI/EndScreen/Button" to="UI" method="_on_play_again_button_pressed"]
+[node name="BackToMenuButton" type="Button" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = 89.5
+offset_right = 43.5
+offset_bottom = 120.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go to Menu"
+
+[node name="GameOver" type="Sprite2D" parent="UI/EndScreen"]
+position = Vector2(610, 156)
+texture = ExtResource("19_spnmx")
+
+[node name="Head1" type="TextureRect" parent="UI/EndScreen"]
+modulate = Color(0.33, 0.33, 0.33, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -142.0
+offset_right = -65.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_xkipq")
+expand_mode = 1
+
+[node name="Head2" type="TextureRect" parent="UI/EndScreen"]
+self_modulate = Color(0.33, 0.33, 0.33, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -161.0
+offset_right = 35.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_xkipq")
+expand_mode = 1
+
+[node name="Head3" type="TextureRect" parent="UI/EndScreen"]
+self_modulate = Color(0.33, 0.33, 0.33, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 68.0
+offset_top = -142.0
+offset_right = 135.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_xkipq")
+expand_mode = 1
+
+[connection signal="pressed" from="UI/EndScreen/PlayAgainButton" to="UI" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="UI/EndScreen/BackToMenuButton" to="UI" method="_on_back_button_pressed"]
