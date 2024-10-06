@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=15 format=3 uid="uid://ba2wt0cwplpt0"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://cu4odgjw2a34l" path="res://assets/head_sheet.png" id="2_k51sn"]
 [ext_resource type="Texture2D" uid="uid://cvji0vi8ek2lk" path="res://assets/bodyb.png" id="2_uc8gp"]
 [ext_resource type="Texture2D" uid="uid://dcpxyx5uyhgqi" path="res://assets/tail.png" id="3_keolc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdymj"]
+atlas = ExtResource("2_k51sn")
+region = Rect2(0, 213, 241, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pec36"]
 atlas = ExtResource("2_k51sn")
@@ -23,6 +27,14 @@ region = Rect2(723, 0, 241, 213)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aikpu"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdymj")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pec36")
@@ -93,7 +105,7 @@ texture = ExtResource("2_uc8gp")
 position = Vector2(134.487, 77.75)
 scale = Vector2(0.481221, 0.481221)
 sprite_frames = SubResource("SpriteFrames_aikpu")
-animation = &"idle"
+animation = &"happy"
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
 position = Vector2(135, 228)

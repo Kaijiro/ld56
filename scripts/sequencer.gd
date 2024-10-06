@@ -67,6 +67,7 @@ func play_sequence() -> void:
     self.ui_listen.visible = false
 
 func sequence_success() -> void:
+    self.ui_player_turn.visible = false
     print("Player has finished turn")
     self.sequence_index = 0
     self.score += self.point
@@ -82,6 +83,7 @@ func sequence_success() -> void:
     GameSignals.emit_signal("FirefliesTurn")
 
 func sequence_failure() -> void:
+    self.ui_player_turn.visible = false
     await get_tree().create_timer(1).timeout
     self.count_error += 1
     self.point = max(self.point - 1, 1);

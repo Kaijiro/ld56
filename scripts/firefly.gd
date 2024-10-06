@@ -127,10 +127,14 @@ func wrong() -> void:
 
 func right() -> void:
     if self.is_awake:
+        await get_tree().create_timer(self.id * 0.06).timeout
+        self.head.play("happy")
+        self.position.y -= 50
         self.isPulsing = false
         self.tail_light.energy = max_energy
         self.tail_light.color = good_light
         await get_tree().create_timer(delay_idle).timeout
+        self.position.y += 50
         self.idle()
 
 func _on_area_2d_mouse_entered() -> void:
