@@ -34,7 +34,7 @@ var is_game_await: bool = false
 
 # Positionning
 @export var awake_height: int = 150
-@export var sleepy_height: int = 550
+@export var sleepy_height: int = 530
 @export var awake_speed: int = 500
 var is_awake: bool = false
 const flying_speed: int = 300
@@ -59,8 +59,8 @@ func _process(delta: float) -> void:
         if self.position.y > self.awake_height:
             self.position.y -= delta * awake_speed    
 
-    if !self.is_awake && self.position.y < self.sleepy_height:
-        self.position.y += delta * awake_speed
+    if !self.is_awake && self.position.y > self.sleepy_height:
+        self.position.y -= delta * awake_speed
 
     # Placeholder click to test
     if self.is_clickable() && Input.is_action_just_pressed("click"):
@@ -110,9 +110,8 @@ func activate() -> void:
     if not self.is_clickable():
         return
     self.is_game_await = false
-    print("call to engine to check if "+str(self.id)+" is the right call")
-    self.emit_signal("FireflyPlayed", self.id)
     await self.sing()
+    self.emit_signal("FireflyPlayed", self.id)
 
 func wrong() -> void:
     if self.is_awake:
