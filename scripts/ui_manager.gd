@@ -6,11 +6,13 @@ extends Node
 @onready var end_screen: ColorRect = $EndScreen
 
 @export var unhappy_face: Texture
+@export var happy_face: Texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     GameSignals.connect("ScoreChange", self._on_score_changed)
     GameSignals.connect("LifeLost", self._on_life_lost)
+    GameSignals.connect("LifeGain", self._on_life_gain)
     GameSignals.connect("GameOver", self._on_game_over)
 
 func _on_score_changed(new_score: int) -> void:
@@ -21,6 +23,12 @@ func _on_life_lost(remaining_lifes: int) -> void:
     var life_texture = self.lifes_label.get_children()[remaining_lifes]
     (life_texture as TextureRect).texture = unhappy_face
     (life_texture as TextureRect).self_modulate = Color(.33, .33, .33)
+    
+func _on_life_gain(remaining_lifes: int) -> void:
+    print(self.lifes_label.get_children())
+    var life_texture = self.lifes_label.get_children()[remaining_lifes-1]
+    (life_texture as TextureRect).texture = happy_face
+    (life_texture as TextureRect).self_modulate = Color(1, 1, 1)    
 
 func _on_game_over() -> void:
     end_screen.visible = true

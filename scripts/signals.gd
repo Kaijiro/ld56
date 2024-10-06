@@ -11,5 +11,6 @@ signal AwaitNextInput
 
 signal ScoreChange(new_score: int)
 signal LifeLost(remaining_lives: int)
+signal LifeGain(remaining_lives: int)
 
 signal GameOver

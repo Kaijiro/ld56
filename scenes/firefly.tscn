@@ -106,7 +106,7 @@ position = Vector2(-0.512985, -84.25)
 scale = Vector2(0.481221, 0.481221)
 sprite_frames = SubResource("SpriteFrames_aikpu")
 animation = &"idle"
-frame_progress = 0.421409
+frame_progress = 0.0391934
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 66)

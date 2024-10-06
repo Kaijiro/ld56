@@ -12,12 +12,15 @@ var is_lasttry_error: bool = false
 var score: int = 0
 var point: int
 var is_perfect: bool = true
+@export var bonus_trigger: int = 5
+var current_bonus_value: int = 0
 
 # Leveling
 var current_difficulty = 0
 @export var difficulties_awake_number: Array[int] = [3,4,6,8]
 @export var difficulties_points: Array[int] = [2,3,5,10]
 @export var difficulties_max: Array[int] = [3,5,7,666]
+
 
 # Some UI
 @onready var ui_listen: Sprite2D = $UI/Listen
@@ -93,10 +96,14 @@ func sequence_success() -> void:
             self.fireflies[n].awake();
         self.point = self.difficulties_points[self.current_difficulty]
         print("New Difficulty : "+ str(self.current_difficulty))
+    if self.current_bonus_value >= self.bonus_trigger:
+        self.count_error = max(0,self.count_error - 1)
+        GameSignals.emit_signal("LifeGain",  self.max_error - self.count_error)
     # TODO : Maybe add a timer here to wait for the animation to end
     GameSignals.emit_signal("FirefliesTurn")
 
 func sequence_failure() -> void:
+    self.current_bonus_value = 0
     self.is_perfect = false
     self.ui_player_turn.visible = false
     await get_tree().create_timer(1).timeout
@@ -126,6 +133,7 @@ func handle_player_play(id: int) -> void:
             if self.is_perfect:
                 print("is perfect !")
                 self.ui_perfect.visible = true
+                self.current_bonus_value += 1
             self.is_perfect = true
             GameSignals.emit_signal("PlayerEnteredRightSequence")
         else:
