@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=22 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bgpiaqeumxnsu" path="res://assets/sounds/pshou.mp3" id="9_8woft"]
 [ext_resource type="AudioStream" uid="uid://dd4opnl5e42xe" path="res://assets/sounds/wizz.mp3" id="10_1vffv"]
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="11_mf5cl"]
+[ext_resource type="Texture2D" uid="uid://bycuspyf48a76" path="res://assets/ld_logo.png" id="12_dpers"]
 [ext_resource type="Texture2D" uid="uid://dllvvmg7ykfbk" path="res://assets/head_happy.png" id="12_s5mw6"]
 [ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="12_w8ykc"]
 [ext_resource type="Texture2D" uid="uid://dbpbohtue36uv" path="res://assets/head_oops.png" id="12_xkipq"]
@@ -117,6 +118,13 @@ id = 8
 note = ExtResource("7_bdygm")
 awake_height = 400
 sleepy_height = 680
+
+[node name="LdLogo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1205, 541)
+rotation = -0.225147
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_dpers")
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(574.778, 322)
