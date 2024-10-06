@@ -60,8 +60,7 @@ func _ready() -> void:
     GameSignals.AwaitNextInput.connect(self._on_await_next_input)
     GameSignals.BlockInputs.connect(self._on_block_inputs)
     
-    self.blink_time = randf_range(0.1,0.7)
-    print(str(self.id)+" blink time is "+str(self.blink_time))
+    self.blink_time = randf_range(0.1,2.7)
 
     self.sleep()
 
@@ -78,11 +77,11 @@ func _process(delta: float) -> void:
         self.activate()
         
     self.tempo_blink += delta
-    if self.tempo_blink >= self.blink_time:
+    if self.tempo_blink >= self.blink_time && self.head.animation == "idle":
         self.head.play("sleep")
-    if self.tempo_blink >= self.blink_time + 0.2:
+    if self.tempo_blink >= self.blink_time + 0.2 && self.head.animation == "sleep":
         self.head.play("idle")
-    if self.tempo_blink >= 1.0:
+    if self.tempo_blink >= 3.0:
         self.tempo_blink = 0
 
     if self.isPulsing:
