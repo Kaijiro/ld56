@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
         if abs(self.rotation_degrees) >= self.balance_angle:
             self.balance_direction = self.balance_direction * -1.0
         self.rotation_degrees += delta * self.balance_speed * self.balance_direction
-        
+
         if self.position.y <= self.awake_height && self.body_a.animation == "fly":
             self.body_a.play("idle")
 

@@ -22,16 +22,11 @@ var current_difficulty = 0
 @export var difficulties_points: Array[int] = [2,3,5,10]
 @export var difficulties_max: Array[int] = [3,5,7,666]
 
-
 # Some UI
-@onready var ui_listen: Sprite2D = $UI/Listen
-@onready var ui_player_turn: Sprite2D = $UI/PlayerTurn
 @onready var ld_logo: Sprite2D = $LdLogo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    self.ui_listen.visible = false
-    self.ui_player_turn.visible = false
     self.point = difficulties_points[self.current_difficulty]
     for node in self.get_children():
         if node is Firefly:
@@ -51,7 +46,6 @@ func _ready() -> void:
     GameSignals.emit_signal("FirefliesTurn")
 
 func call_sequence() -> void:
-    self.ui_player_turn.visible = false
 
     if self.is_lasttry_error:
         self.is_lasttry_error = false
@@ -61,7 +55,6 @@ func call_sequence() -> void:
     await self.play_sequence()
 
     GameSignals.emit_signal("PlayerTurn")
-    self.ui_player_turn.visible = true
 
 func add_note() -> void:
     var tmp_selection = self.fireflies.filter(func(node): return node.is_awake).pick_random()
@@ -74,16 +67,11 @@ func add_note() -> void:
     self.sequence.append(tmp_selection)
 
 func play_sequence() -> void:
-    self.ui_listen.visible = true 
-
     for node in self.sequence:
         await node.sing()
         await get_tree().create_timer(.3).timeout
-    
-    self.ui_listen.visible = false
 
 func sequence_success() -> void:
-    self.ui_player_turn.visible = false
     self.sequence_index = 0
     self.score += self.point
     GameSignals.emit_signal("ScoreChange", self.score)
@@ -103,7 +91,6 @@ func sequence_success() -> void:
 func sequence_failure() -> void:
     self.current_bonus_value = 0
     self.is_perfect = false
-    self.ui_player_turn.visible = false
     var tweener = get_tree().create_tween()
     tweener.set_ease(Tween.EASE_OUT)
     tweener.tween_property(self.ld_logo,"position",Vector2(self.ld_logo.position.x,610),0.8).set_trans(Tween.TRANS_SPRING)
@@ -112,7 +99,7 @@ func sequence_failure() -> void:
     self.count_error += 1
     self.point = max(self.point - 1, 1);
     GameSignals.emit_signal("LifeLost",  self.max_error - self.count_error)
-    
+
     if self.count_error < self.max_error:
         self.is_lasttry_error = true
         self.sequence_index = 0
@@ -123,7 +110,6 @@ func sequence_failure() -> void:
 # TODO Placeholder, probably won't make it to final build
 func game_over() -> void:
     GameSignals.emit_signal("BlockInputs")
-    self.ui_player_turn.visible = false
 
 func handle_player_play(id: int, played_sequence_index: int) -> void:
     if self.sequence[played_sequence_index].id == id:
