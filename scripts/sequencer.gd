@@ -85,7 +85,7 @@ func play_sequence() -> void:
 
     for node in self.sequence:
         await node.sing()
-        #await get_tree().create_timer(.3).timeout
+        await get_tree().create_timer(.3).timeout
     get_tree().create_tween().tween_property(self.ld_logo,"position",Vector2(1205,540),0.25)
     self.ui_listen.visible = false
 
