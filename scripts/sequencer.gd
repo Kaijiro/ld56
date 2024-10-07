@@ -4,6 +4,7 @@ extends Node2D
 var fireflies = []
 var sequence = []
 var sequence_index = 0
+var sequence_solved = 0
 
 # Score
 @export var max_error: int = 3
@@ -124,16 +125,19 @@ func game_over() -> void:
     GameSignals.emit_signal("BlockInputs")
     self.ui_player_turn.visible = false
 
-func handle_player_play(id: int) -> void:
-    if self.sequence[self.sequence_index].id == id:
+func handle_player_play(id: int, played_sequence_index: int) -> void:
+    if self.sequence[played_sequence_index].id == id:
+        self.sequence_solved += 1
         self.sequence_index = self.sequence_index + 1
-        if self.sequence_index == self.sequence.size():
+        if self.sequence_solved == self.sequence.size():
+            self.sequence_solved = 0
             if self.is_perfect:
                 GameSignals.SequenceIsPerfect.emit()
                 self.current_bonus_value += 1
             self.is_perfect = true
             GameSignals.emit_signal("PlayerEnteredRightSequence")
         else:
-            GameSignals.emit_signal("AwaitNextInput")
+            GameSignals.emit_signal("AwaitNextInput",self.sequence_index)
     else:
+        self.sequence_solved = 0
         GameSignals.emit_signal("PlayerEnteredWrongSequence")

@@ -13,7 +13,7 @@ var balance_speed: float = 10
 # Customisation
 @export var singing_light: Color = Color.BLUE_VIOLET
 @export var id: int = 0
-signal FireflyPlayed(id)
+signal FireflyPlayed(id,sequence_index)
 
 # Colors definition
 const idle_light: Color = Color.GREEN_YELLOW
@@ -39,6 +39,7 @@ var is_player_turn: bool = false
 var is_game_await: bool = false
 @export var delay_idle: float = 0.5
 var is_creative: bool = false
+var sequence_index: int = 0
 
 # Positionning
 @export var awake_height: int = 150
@@ -143,10 +144,10 @@ func activate() -> void:
         if not self.is_creative:
             return
 
-    GameSignals.emit_signal("BlockInputs")
+    #GameSignals.emit_signal("BlockInputs")
     self.is_game_await = false
-    await self.sing()
-    self.emit_signal("FireflyPlayed", self.id)
+    self.sing()
+    self.emit_signal("FireflyPlayed", self.id, self.sequence_index)
 
 func wrong() -> void:
     if self.is_awake:
@@ -184,16 +185,19 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_player_turn_start() -> void:
     self.is_game_await = true
     self.is_player_turn = true
+    self.sequence_index = 0
 
 func _on_fireflies_turn_start() -> void:
     self.is_player_turn = false
     self.is_game_await = false
 
-func _on_await_next_input() -> void:
+func _on_await_next_input(new_sequence_index: int) -> void:
     self.is_game_await = true
+    self.sequence_index = new_sequence_index
 
 func _on_block_inputs() -> void:
-    self.is_game_await = false
+    #self.is_game_await = false
+    pass
 
 func is_clickable() -> bool:
     return self.is_mouse_on && self.is_awake && self.is_player_turn && (self.is_game_await || self.is_creative)
