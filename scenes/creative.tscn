@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cti1dpq8iaig5"]
+[gd_scene load_steps=15 format=3 uid="uid://cti1dpq8iaig5"]
 
 [ext_resource type="Script" path="res://scripts/creative_mngr.gd" id="1_g3438"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_483ds"]
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="3_kdrq5"]
+[ext_resource type="PackedScene" uid="uid://37fedj4n5ctf" path="res://scenes/backflies.tscn" id="3_lmtob"]
 [ext_resource type="AudioStream" uid="uid://6iwvnqpckpep" path="res://assets/sounds/poum.mp3" id="4_d3api"]
 [ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_4i72a"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="6_rxlah"]
@@ -22,7 +23,10 @@ position = Vector2(573, 323)
 scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("2_483ds")
 
+[node name="Backflies" parent="." instance=ExtResource("3_lmtob")]
+
 [node name="Firefly" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(120, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
@@ -33,6 +37,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly2" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(253, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
@@ -43,6 +48,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly3" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(385, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.966667, 1, 0, 1)
@@ -52,6 +58,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly4" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(515, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
@@ -62,6 +69,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly5" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(648, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
@@ -72,6 +80,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly6" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(779, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
@@ -82,6 +91,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly7" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(918, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
@@ -92,6 +102,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly8" parent="." instance=ExtResource("3_kdrq5")]
+z_index = 1
 position = Vector2(1053, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
@@ -102,6 +113,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Foreground" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(574.778, 322)
 scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("12_60nvj")
@@ -110,6 +122,7 @@ texture = ExtResource("12_60nvj")
 script = ExtResource("13_g0hjb")
 
 [node name="Button" type="Button" parent="UI"]
+z_index = 5
 offset_left = 1029.0
 offset_top = 607.0
 offset_right = 1144.0

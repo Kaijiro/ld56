@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://37fedj4n5ctf"]
+
+[ext_resource type="PackedScene" uid="uid://cv7bwlticmvs7" path="res://scenes/back_fly.tscn" id="1_lqkqd"]
+
+[node name="Backflies" type="Node2D"]
+
+[node name="BackFly" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(1051, 174)
+
+[node name="BackFly2" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(394, 211)
+
+[node name="BackFly3" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(668, 216)
+
+[node name="BackFly4" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(130, 262)
+
+[node name="BackFly5" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(925, 378)
+
+[node name="BackFly6" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(257, 160)
+
+[node name="BackFly7" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(556, 549)
+
+[node name="BackFly8" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(741, 408)
+
+[node name="BackFly9" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(76, 537)
+
+[node name="BackFly10" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(1091, 506)
+
+[node name="BackFly11" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(532, 398)
+
+[node name="BackFly12" parent="." instance=ExtResource("1_lqkqd")]
+position = Vector2(886, 160)
+
+[node name="BackFly13" parent="." instance=ExtResource("1_lqkqd")]
+z_index = -5
+position = Vector2(198, 444)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=23 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_kbfrn"]
+[ext_resource type="PackedScene" uid="uid://37fedj4n5ctf" path="res://scenes/backflies.tscn" id="3_ea36d"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]
 [ext_resource type="AudioStream" uid="uid://dbvdpd6ivqyk8" path="res://assets/sounds/bleh.mp3" id="4_rlsal"]
 [ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_0a1n4"]
@@ -36,7 +37,10 @@ position = Vector2(573, 323)
 scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("2_kbfrn")
 
+[node name="Backflies" parent="." instance=ExtResource("3_ea36d")]
+
 [node name="Firefly" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(120, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.490196, 0.113725, 0, 1)
@@ -47,6 +51,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly2" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(253, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(1, 0.583333, 0, 1)
@@ -57,6 +62,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly3" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(385, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.966667, 1, 0, 1)
@@ -66,6 +72,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly4" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(515, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0, 1, 0.0666666, 1)
@@ -76,6 +83,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly5" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(648, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.0261, 0.574635, 0.87, 1)
@@ -86,6 +94,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly6" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(779, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.00937953, 0.168305, 1, 1)
@@ -96,6 +105,7 @@ awake_height = 400
 sleepy_height = 680
 
 [node name="Firefly7" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(918, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.28945, 0.145349, 0.840661, 1)
@@ -106,6 +116,7 @@ awake_height = 250
 sleepy_height = 680
 
 [node name="Firefly8" parent="." instance=ExtResource("1_84c6k")]
+z_index = 1
 position = Vector2(1053, 680)
 scale = Vector2(0.69, 0.69)
 singing_light = Color(0.466226, 0.0172693, 0.503273, 1)
@@ -116,12 +127,14 @@ sleepy_height = 680
 
 [node name="LdLogo" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(1205, 541)
 rotation = -0.225147
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_dpers")
 
 [node name="Foreground" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(574.778, 322)
 scale = Vector2(0.905556, 0.905556)
 texture = ExtResource("12_w8ykc")
@@ -132,6 +145,7 @@ unhappy_face = ExtResource("12_xkipq")
 happy_face = ExtResource("12_s5mw6")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
+z_index = 5
 offset_left = 1.0
 offset_top = 75.0
 offset_right = 57.0
@@ -148,6 +162,7 @@ text = "0"
 [node name="Lifes" type="Node" parent="UI"]
 
 [node name="Life1" type="TextureRect" parent="UI/Lifes"]
+z_index = 5
 offset_left = 81.0
 offset_top = 12.0
 offset_right = 139.0
@@ -156,6 +171,7 @@ texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
 [node name="Life2" type="TextureRect" parent="UI/Lifes"]
+z_index = 5
 offset_left = 141.0
 offset_top = 12.0
 offset_right = 199.0
@@ -164,6 +180,7 @@ texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
 [node name="Life3" type="TextureRect" parent="UI/Lifes"]
+z_index = 5
 offset_left = 201.0
 offset_top = 12.0
 offset_right = 259.0
@@ -173,20 +190,24 @@ expand_mode = 1
 
 [node name="Listen" type="Sprite2D" parent="UI"]
 visible = false
+z_index = 5
 position = Vector2(588, 112.5)
 texture = ExtResource("16_x6obg")
 
 [node name="PlayerTurn" type="Sprite2D" parent="UI"]
 visible = false
+z_index = 5
 position = Vector2(609, 131.5)
 texture = ExtResource("17_ersqf")
 
 [node name="Perfect" type="Sprite2D" parent="UI"]
 visible = false
+z_index = 5
 position = Vector2(609, 131.5)
 texture = ExtResource("18_dk3w0")
 
 [node name="Panel" type="Panel" parent="UI"]
+z_index = 5
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 67.0
@@ -205,6 +226,7 @@ horizontal_alignment = 2
 
 [node name="EndScreen" type="ColorRect" parent="UI"]
 visible = false
+z_index = 5
 offset_left = -4.0
 offset_top = -2.0
 offset_right = 1153.0

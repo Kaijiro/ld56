@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://blts3iqlygl0g"]
+[gd_scene load_steps=5 format=3 uid="uid://blts3iqlygl0g"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_jc0un"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="1_qkcfw"]
 [ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="2_fhks8"]
+[ext_resource type="PackedScene" uid="uid://37fedj4n5ctf" path="res://scenes/backflies.tscn" id="3_dc3tq"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -20,7 +21,10 @@ offset_bottom = 648.0
 texture = ExtResource("1_qkcfw")
 expand_mode = 1
 
+[node name="Backflies" parent="." instance=ExtResource("3_dc3tq")]
+
 [node name="FG" type="TextureRect" parent="."]
+z_index = 2
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 647.0
@@ -28,6 +32,7 @@ texture = ExtResource("2_fhks8")
 expand_mode = 1
 
 [node name="ClassicModeButton" type="Button" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,6 +48,7 @@ grow_vertical = 2
 text = "Classic mode"
 
 [node name="CreativeModeButton" type="Button" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,6 +64,7 @@ grow_vertical = 2
 text = "Creative mode"
 
 [node name="Label" type="Label" parent="."]
+z_index = 5
 layout_mode = 0
 offset_left = 2.0
 offset_top = 620.0
@@ -67,6 +74,7 @@ theme_override_colors/font_color = Color(0.404511, 0.404511, 0.404511, 1)
 text = "A game made for the LudumDare 56"
 
 [node name="Label2" type="Label" parent="."]
+z_index = 5
 layout_mode = 0
 offset_left = 676.0
 offset_top = 622.0
@@ -76,6 +84,7 @@ theme_override_colors/font_color = Color(0.403922, 0.403922, 0.403922, 1)
 text = "Made with coffee and energy drinks by OkkoLOBR and Kaijiro"
 
 [node name="Label3" type="Label" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -93,6 +102,7 @@ text = "Headphones recommended for a better game experience !"
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 5
 layout_mode = 0
 offset_left = 303.0
 offset_top = 144.0

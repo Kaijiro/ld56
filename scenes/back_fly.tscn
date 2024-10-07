@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv7bwlticmvs7"]
+
+[ext_resource type="Script" path="res://scripts/back_fly.gd" id="1_w4dwr"]
+
+[sub_resource type="Gradient" id="Gradient_cvprk"]
+offsets = PackedFloat32Array(0.22619, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1h8jm"]
+gradient = SubResource("Gradient_cvprk")
+fill = 1
+fill_from = Vector2(0.5, 0.474138)
+fill_to = Vector2(0.823276, 0.172414)
+
+[node name="BackFly" type="Node2D"]
+script = ExtResource("1_w4dwr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 5
+color = Color(0.839216, 0.984314, 0.745098, 1)
+energy = 2.0
+range_z_min = 0
+range_z_max = 0
+texture = SubResource("GradientTexture2D_1h8jm")
