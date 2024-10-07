@@ -9,6 +9,7 @@ var blink_time: float = 0.8
 var balance_angle: float = 2
 var balance_direction: float = -1
 var balance_speed: float = 10
+var is_idle: bool = false
 
 # Customisation
 @export var singing_light: Color = Color.BLUE_VIOLET
@@ -88,7 +89,7 @@ func _process(delta: float) -> void:
             self.balance_direction = self.balance_direction * -1.0
         self.rotation_degrees += delta * self.balance_speed * self.balance_direction
         
-        if self.position.y <= self.awake_height && self.body_a.animation == "fly":
+        if self.position.y <= self.awake_height && self.body_a.animation == "fly" && self.is_idle:
             self.body_a.play("idle")
 
     if !self.is_awake && self.position.y > self.sleepy_height:
@@ -137,6 +138,7 @@ func idle() -> void:
     self.isPulsing = true
     self.isPulseUp = false
     self.tail_light.color = idle_light
+    self.is_idle = true;
 
 # When player has clicked on a firefly
 func activate() -> void:
@@ -161,16 +163,17 @@ func wrong() -> void:
 
 func right() -> void:
     if self.is_awake:
+        self.is_idle = false
         self.isPulsing = false
         self.tail_light.energy = max_energy
         self.tail_light.color = good_light
         await get_tree().create_timer(self.id * 0.06).timeout
         self.head.play("happy")
+        self.body_a.play("fly")
         var tween = get_tree().create_tween()
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y-50),0.25)
         if self.is_perfect_run:
             self.tail_light.color = self.singing_light
-        tween = get_tree().create_tween()
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y),0.25)
         await get_tree().create_timer(delay_idle).timeout
         self.is_perfect_run = true
