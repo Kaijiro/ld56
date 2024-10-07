@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="2_kbfrn"]
-[ext_resource type="PackedScene" path="res://scenes/backflies.tscn" id="3_ea36d"]
+[ext_resource type="PackedScene" uid="uid://37fedj4n5ctf" path="res://scenes/backflies.tscn" id="3_ea36d"]
 [ext_resource type="AudioStream" uid="uid://emtxggmvc655" path="res://assets/sounds/bah.mp3" id="3_ir64s"]
 [ext_resource type="AudioStream" uid="uid://dbvdpd6ivqyk8" path="res://assets/sounds/bleh.mp3" id="4_rlsal"]
 [ext_resource type="AudioStream" uid="uid://d3irjfh5vh7mt" path="res://assets/sounds/dong.mp3" id="5_0a1n4"]
@@ -231,6 +231,28 @@ offset_top = -2.0
 offset_right = 1153.0
 offset_bottom = 648.0
 color = Color(0.325, 0.325, 0.325, 0.622)
+
+[node name="ScoreLabel" type="Label" parent="UI/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_right = 17.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score : "
+
+[node name="ScoreValue" type="Label" parent="UI/EndScreen/ScoreLabel"]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 106.0
+offset_bottom = 23.0
+text = "0"
 
 [node name="PlayAgainButton" type="Button" parent="UI/EndScreen"]
 layout_mode = 1

@@ -7,7 +7,7 @@ signal PlayerEnteredWrongSequence
 signal PlayerEnteredRightSequence
 
 signal BlockInputs
-signal AwaitNextInput
+signal AwaitNextInput(sequence_index: int)
 
 signal ScoreChange(new_score: int)
 signal LifeLost(remaining_lives: int)
