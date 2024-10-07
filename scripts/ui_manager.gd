@@ -1,7 +1,6 @@
 extends Node
 
 @onready var score_value: Label = $ScoreLabel/ScoreValue
-@onready var end_score_value: Label = $EndScreen/ScoreLabel/ScoreValue
 @onready var lifes_label: Node = $Lifes
 @onready var end_screen: ColorRect = $EndScreen
 @onready var combo_label: Label = $Panel/Label
@@ -22,7 +21,6 @@ func _ready() -> void:
 
 func _on_score_changed(new_score: int) -> void:
     score_value.text = str(new_score)
-    end_score_value.text = str(new_score)
 
 func _on_life_lost(remaining_lifes: int) -> void:
     var life_texture = self.lifes_label.get_children()[remaining_lifes]
