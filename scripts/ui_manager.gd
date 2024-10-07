@@ -3,7 +3,7 @@ extends Node
 @onready var score_value: Label = $ScoreLabel/ScoreValue
 @onready var lifes_label: Node = $Lifes
 @onready var end_screen: ColorRect = $EndScreen
-@onready var combo_label: Label = $Panel/Label
+@onready var combo_label: Label = $ComboLabel
 
 @export var unhappy_face: Texture
 @export var happy_face: Texture
