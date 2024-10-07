@@ -73,16 +73,12 @@ func add_note() -> void:
     self.sequence.append(tmp_selection)
 
 func play_sequence() -> void:
-    self.ui_listen.visible = true
-
-    if self.current_difficulty > 3:
-        if randi_range(0,100) > 59:
-            get_tree().create_tween().tween_property(self.ld_logo,"position",Vector2(1128,self.ld_logo.position.y),0.25)
+    self.ui_listen.visible = true 
 
     for node in self.sequence:
         await node.sing()
         await get_tree().create_timer(.3).timeout
-    get_tree().create_tween().tween_property(self.ld_logo,"position",Vector2(1205,540),0.25)
+    
     self.ui_listen.visible = false
 
 func sequence_success() -> void:
@@ -107,10 +103,15 @@ func sequence_failure() -> void:
     self.current_bonus_value = 0
     self.is_perfect = false
     self.ui_player_turn.visible = false
+    var tweener = get_tree().create_tween()
+    tweener.set_ease(Tween.EASE_OUT)
+    tweener.tween_property(self.ld_logo,"position",Vector2(self.ld_logo.position.x,610),0.8).set_trans(Tween.TRANS_SPRING)
+    tweener.tween_property(self.ld_logo,"position",Vector2(self.ld_logo.position.x,750),0.4)
     await get_tree().create_timer(1).timeout
     self.count_error += 1
     self.point = max(self.point - 1, 1);
     GameSignals.emit_signal("LifeLost",  self.max_error - self.count_error)
+    
     if self.count_error < self.max_error:
         self.is_lasttry_error = true
         self.sequence_index = 0
