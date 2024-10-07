@@ -42,10 +42,8 @@ func _process(delta: float) -> void:
         if self.position.x < self.x_target:
             self.position.x += delta * self.x_speed
         else: 
-            print("Current Position "+str(self.position.x))
             self.x_direction = -1.0
             self.x_target = self.initial_x + randf_range(min_x_amplitude,max_x_amplitude) * self.x_direction
-            print("New Target "+str(self.x_target))
     if self.x_direction < 0:
         if self.position.x > self.x_target:
             self.position.x -= delta * self.x_speed
@@ -57,10 +55,8 @@ func _process(delta: float) -> void:
         if self.position.y < self.y_target:
             self.position.y += delta * self.y_speed
         else: 
-            print("Current Position "+str(self.position.y))
             self.y_direction = -1.0
             self.y_target = self.initial_y + randf_range(min_y_amplitude,max_y_amplitude) * self.y_direction
-            print("New Target "+str(self.y_target))
     if self.y_direction < 0:
         if self.position.y > self.y_target:
             self.position.y -= delta * self.y_speed

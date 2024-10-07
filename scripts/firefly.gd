@@ -163,6 +163,7 @@ func right() -> void:
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y-50),0.25)
         if self.is_perfect_run:
             self.tail_light.color = self.singing_light
+        tween = get_tree().create_tween()
         tween.tween_property(self,"position",Vector2(self.position.x,self.position.y),0.25)
         await get_tree().create_timer(delay_idle).timeout
         self.is_perfect_run = true
