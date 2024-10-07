@@ -25,14 +25,12 @@ var current_difficulty = 0
 # Some UI
 @onready var ui_listen: Sprite2D = $UI/Listen
 @onready var ui_player_turn: Sprite2D = $UI/PlayerTurn
-@onready var ui_perfect: Sprite2D = $UI/Perfect
 @onready var ld_logo: Sprite2D = $LdLogo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     self.ui_listen.visible = false
     self.ui_player_turn.visible = false
-    self.ui_perfect.visible = false
     self.point = difficulties_points[self.current_difficulty]
     for node in self.get_children():
         if node is Firefly:
@@ -59,7 +57,6 @@ func call_sequence() -> void:
     else:
         self.add_note()
         await self.get_tree().create_timer(1).timeout
-    self.ui_perfect.visible = false
     await self.play_sequence()
 
     GameSignals.emit_signal("PlayerTurn")
@@ -131,7 +128,7 @@ func handle_player_play(id: int) -> void:
         self.sequence_index = self.sequence_index + 1
         if self.sequence_index == self.sequence.size():
             if self.is_perfect:
-                self.ui_perfect.visible = true
+                GameSignals.SequenceIsPerfect.emit()
                 self.current_bonus_value += 1
             self.is_perfect = true
             GameSignals.emit_signal("PlayerEnteredRightSequence")
