@@ -3,7 +3,8 @@ extends Node
 @onready var score_value: Label = $ScoreLabel/ScoreValue
 @onready var lifes_label: Node = $Lifes
 @onready var end_screen: ColorRect = $EndScreen
-@onready var combo_label: Label = $Panel/Label
+@onready var combo_label: Label = $ComboLabel
+@onready var perfect_sprite: Sprite2D = $Perfect
 
 @export var unhappy_face: Texture
 @export var happy_face: Texture
@@ -18,6 +19,7 @@ func _ready() -> void:
     GameSignals.GameOver.connect(self._on_game_over)
     GameSignals.PlayerEnteredRightSequence.connect(self._on_player_entered_right_sequence)
     GameSignals.PlayerEnteredWrongSequence.connect(self._on_player_entered_wrong_sequence)
+    GameSignals.SequenceIsPerfect.connect(self._on_sequence_is_perfect)
 
 func _on_score_changed(new_score: int) -> void:
     score_value.text = str(new_score)
@@ -48,3 +50,18 @@ func _on_player_entered_right_sequence() -> void:
 func _on_player_entered_wrong_sequence() -> void:
     self.successive_good_sequence = 0
     self.combo_label.text = "x0"
+
+func _on_sequence_is_perfect() -> void:
+    var original_global_position = perfect_sprite.global_position
+
+    perfect_sprite.visible = true
+    var tween = get_tree().create_tween().set_parallel(true)
+    tween.tween_property(perfect_sprite, "global_position", combo_label.global_position, .4)
+    tween.tween_property(perfect_sprite, "scale", Vector2(.2, .2), .5)
+    tween.tween_property(perfect_sprite, "modulate", Color(1, 1, 1, 0), .5)
+    tween.tween_callback(func():
+        perfect_sprite.visible = false
+        perfect_sprite.global_position = original_global_position
+        perfect_sprite.scale = Vector2(1, 1)
+        perfect_sprite.modulate = Color(1, 1, 1 ,1)
+    ).set_delay(.7)

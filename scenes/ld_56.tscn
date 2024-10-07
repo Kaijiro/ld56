@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bo47qdmdnvd1v"]
+[gd_scene load_steps=22 format=3 uid="uid://bo47qdmdnvd1v"]
 
 [ext_resource type="PackedScene" uid="uid://ba2wt0cwplpt0" path="res://scenes/firefly.tscn" id="1_84c6k"]
 [ext_resource type="Script" path="res://scripts/sequencer.gd" id="1_ea7qu"]
@@ -21,13 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://da2qx0e4cy4js" path="res://assets/UI/your_turn.png" id="17_ersqf"]
 [ext_resource type="Texture2D" uid="uid://jb5jxedra64s" path="res://assets/UI/perfect.png" id="18_dk3w0"]
 [ext_resource type="Texture2D" uid="uid://dy4x2jbo4l1aj" path="res://assets/UI/game_over.png" id="19_spnmx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkkr5"]
-bg_color = Color(0.6, 0.6, 0.6, 0.714)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
 
 [node name="LD56" type="Node2D"]
 script = ExtResource("1_ea7qu")
@@ -144,44 +137,48 @@ happy_face = ExtResource("12_s5mw6")
 
 [node name="ScoreLabel" type="Label" parent="UI"]
 z_index = 5
-offset_left = 1.0
-offset_top = 75.0
-offset_right = 57.0
-offset_bottom = 98.0
-text = "Score : "
+offset_left = 1081.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 23
+text = "Score"
 
 [node name="ScoreValue" type="Label" parent="UI/ScoreLabel"]
 layout_mode = 0
-offset_left = 58.0
-offset_right = 106.0
-offset_bottom = 23.0
+offset_left = 14.0
+offset_top = 33.0
+offset_right = 62.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
 text = "0"
+horizontal_alignment = 2
 
 [node name="Lifes" type="Node" parent="UI"]
 
 [node name="Life1" type="TextureRect" parent="UI/Lifes"]
 z_index = 5
-offset_left = 81.0
+offset_left = 14.0
 offset_top = 12.0
-offset_right = 139.0
+offset_right = 72.0
 offset_bottom = 59.0
 texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
 [node name="Life2" type="TextureRect" parent="UI/Lifes"]
 z_index = 5
-offset_left = 141.0
+offset_left = 74.0
 offset_top = 12.0
-offset_right = 199.0
+offset_right = 132.0
 offset_bottom = 59.0
 texture = ExtResource("12_s5mw6")
 expand_mode = 1
 
 [node name="Life3" type="TextureRect" parent="UI/Lifes"]
 z_index = 5
-offset_left = 201.0
+offset_left = 134.0
 offset_top = 12.0
-offset_right = 259.0
+offset_right = 192.0
 offset_bottom = 59.0
 texture = ExtResource("12_s5mw6")
 expand_mode = 1
@@ -204,23 +201,13 @@ z_index = 5
 position = Vector2(609, 131.5)
 texture = ExtResource("18_dk3w0")
 
-[node name="Panel" type="Panel" parent="UI"]
-z_index = 5
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 67.0
-offset_bottom = 67.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_pkkr5")
-
-[node name="Label" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 7.0
+[node name="ComboLabel" type="Label" parent="UI"]
+offset_left = 584.0
 offset_top = 9.0
-offset_right = 54.0
+offset_right = 631.0
 offset_bottom = 48.0
 theme_override_font_sizes/font_size = 28
 text = "x0"
-horizontal_alignment = 2
 
 [node name="EndScreen" type="ColorRect" parent="UI"]
 visible = false

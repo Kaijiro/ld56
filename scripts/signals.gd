@@ -5,6 +5,7 @@ signal PlayerTurn
 
 signal PlayerEnteredWrongSequence
 signal PlayerEnteredRightSequence
+signal SequenceIsPerfect
 
 signal BlockInputs
 signal AwaitNextInput
