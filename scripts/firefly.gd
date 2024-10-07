@@ -123,7 +123,9 @@ func sleep() -> void:
 
 # For GameEngine to make this firefly sing in the SimonSequence
 func sing() -> void:
+    self.is_idle = false
     self.head.play("sing")
+    self.body_a.play("fly")
     self.isPulsing = false
     self.tail_light.energy = max_energy
     self.tail_light.color = singing_light
@@ -134,11 +136,12 @@ func sing() -> void:
     self.idle()
 
 func idle() -> void:
+    self.is_idle = true;
     self.head.play("idle")
     self.isPulsing = true
     self.isPulseUp = false
     self.tail_light.color = idle_light
-    self.is_idle = true;
+    
 
 # When player has clicked on a firefly
 func activate() -> void:
