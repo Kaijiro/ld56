@@ -3,6 +3,7 @@ class_name Firefly extends Node2D
 # Animation
 @onready var tail_light: PointLight2D = $TailLight
 @onready var head: AnimatedSprite2D = $Head
+@onready var body_a: AnimatedSprite2D = $BodyA
 var tempo_blink: float = 0
 var blink_time: float = 0.8
 var balance_angle: float = 2
@@ -85,6 +86,9 @@ func _process(delta: float) -> void:
         if abs(self.rotation_degrees) >= self.balance_angle:
             self.balance_direction = self.balance_direction * -1.0
         self.rotation_degrees += delta * self.balance_speed * self.balance_direction
+        
+        if self.position.y <= self.awake_height && self.body_a.animation == "fly":
+            self.body_a.play("idle")
 
     if !self.is_awake && self.position.y > self.sleepy_height:
         self.position.y -= delta * awake_speed
@@ -105,11 +109,13 @@ func _process(delta: float) -> void:
 # For GameEngine to make this firefly active for this level
 func awake() -> void:
     self.is_awake = true
+    self.body_a.play("fly")
     self.idle()
 
 func sleep() -> void:
     self.idle()
     self.head.play("sleep")
+    self.body_a.play("idle")
     self.is_awake = false
 
 

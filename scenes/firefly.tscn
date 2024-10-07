@@ -1,9 +1,58 @@
-[gd_scene load_steps=15 format=3 uid="uid://ba2wt0cwplpt0"]
+[gd_scene load_steps=22 format=3 uid="uid://ba2wt0cwplpt0"]
 
 [ext_resource type="Script" path="res://scripts/firefly.gd" id="1_0mb7h"]
 [ext_resource type="Texture2D" uid="uid://cu4odgjw2a34l" path="res://assets/head_sheet.png" id="2_k51sn"]
 [ext_resource type="Texture2D" uid="uid://cvji0vi8ek2lk" path="res://assets/bodyb.png" id="2_uc8gp"]
+[ext_resource type="Texture2D" uid="uid://c4vk8q16alb0v" path="res://assets/body_sheet.png" id="3_81iwi"]
 [ext_resource type="Texture2D" uid="uid://dcpxyx5uyhgqi" path="res://assets/tail.png" id="3_keolc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h3c3"]
+atlas = ExtResource("3_81iwi")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ate75"]
+atlas = ExtResource("3_81iwi")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwt5h"]
+atlas = ExtResource("3_81iwi")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aei1s"]
+atlas = ExtResource("3_81iwi")
+region = Rect2(500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqeyg"]
+atlas = ExtResource("3_81iwi")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mh684"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h3c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ate75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwt5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aei1s")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqeyg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdymj"]
 atlas = ExtResource("2_k51sn")
@@ -97,9 +146,16 @@ height = 222.0
 script = ExtResource("1_0mb7h")
 
 [node name="Body" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1.52588e-05, -4.99998)
 scale = Vector2(0.452929, 0.452929)
 texture = ExtResource("2_uc8gp")
+
+[node name="BodyA" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.453, 0.453)
+sprite_frames = SubResource("SpriteFrames_mh684")
+animation = &"fly"
+autoplay = "idle"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.512985, -84.25)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_jc0un"]
 [ext_resource type="Texture2D" uid="uid://c3sag02gtlcdn" path="res://assets/Decor/background.png" id="1_qkcfw"]
 [ext_resource type="Texture2D" uid="uid://duuf8v7y0gtut" path="res://assets/Decor/foreground.png" id="2_fhks8"]
-[ext_resource type="PackedScene" path="res://scenes/backflies.tscn" id="3_dc3tq"]
+[ext_resource type="PackedScene" uid="uid://37fedj4n5ctf" path="res://scenes/backflies.tscn" id="3_dc3tq"]
 [ext_resource type="Texture2D" uid="uid://mjwnt2wqi2q6" path="res://assets/UI/title.png" id="5_o0emg"]
 
 [node name="Menu" type="Control"]
