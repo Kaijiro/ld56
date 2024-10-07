@@ -77,18 +77,15 @@ func add_note() -> void:
 
 func play_sequence() -> void:
     self.ui_listen.visible = true
-    var tween = get_tree().create_tween()
 
     if self.current_difficulty > 3:
-        if randi_range(0,100) > 95:
-            self.ld_logo.visible = true
-            tween.tween_property(self.ld_logo,"position",Vector2(1128,self.ld_logo.position.y),0.25)
+        if randi_range(0,100) > 59:
+            get_tree().create_tween().tween_property(self.ld_logo,"position",Vector2(1128,self.ld_logo.position.y),0.25)
 
     for node in self.sequence:
         await node.sing()
         await get_tree().create_timer(.3).timeout
-    tween = get_tree().create_tween()
-    tween.tween_property(self.ld_logo,"position",Vector2(1205,540),0.25)
+    get_tree().create_tween().tween_property(self.ld_logo,"position",Vector2(1205,540),0.25)
     self.ui_listen.visible = false
 
 func sequence_success() -> void:
