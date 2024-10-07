@@ -20,7 +20,6 @@ light_mask = 2
 visibility_layer = 2
 z_index = 5
 color = Color(0.839216, 0.984314, 0.745098, 1)
-energy = 2.0
 range_z_min = 0
 range_z_max = 0
 texture = SubResource("GradientTexture2D_1h8jm")
